@@ -33,8 +33,15 @@ public class FunctionGarcon {
 	}
 
 	
-	public void changeWaiter() {
-		
+	public boolean changeWaiter(int id, String name, String address) {
+		for(Garcon w : waiters) {
+			if(w.getId()==id) {
+				w.setName(name);
+				w.setAddress(address);
+				return true;
+			}
+		}
+		return false;
 	}
 	
 	public void reportWaiter() {

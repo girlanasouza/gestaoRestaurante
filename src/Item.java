@@ -9,7 +9,7 @@ public class Item {
 		this.describe=describe;
 		this.value=value;
 	}
-	
+
 	public String getName() {
 		return this.name;
 	}
@@ -21,5 +21,26 @@ public class Item {
 	public double getValue() {
 		return this.value;
 	}
+	
+
+	public void setName(String name) {
+		this.name=name;
+	}
+	
+	public void setId(String describe) {
+		this.describe = describe;
+	}
+	
+	public void setValue(int value) {
+		this.value=value;
+	}
+	
+	public String toString() {
+		String retorno = "Nome do prato: "+getName()+"\n"+"Descrição: "+getDescribe()+"\n"+
+	"Valor: "+getValue()+"\n";
+		return retorno;
+	}
+	
+	
 
 }

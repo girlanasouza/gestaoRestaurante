@@ -21,7 +21,7 @@ public class Garcon {
 		return this.id;
 	}
 	
-	public String Address() {
+	public String getAddress() {
 		return this.address;
 		
 	}
@@ -31,12 +31,26 @@ public class Garcon {
 
 	}
 	
+	
+	public void setId(int id) {
+		this.id=id;
+	}
+	
+	public void setAddress(String address) {
+		this.address=address;
+	}
+	
 	public boolean equals(Garcon g) {
 		if(this.id==g.id) {
 			return true;
 		}
 
 		return false;
+	}
+
+	public String toString(){
+		String describe = "Nome do Garçon: "+getName()+"\n"+"Id Garçon: "+getId()+"\n";
+		return describe;
 	}
 	
 

@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 
-public class Cardápio {
+public class Cardapio {
 	ArrayList <Item> cardapio = new ArrayList<Item>();
 	
 	public boolean addItem(Item item) {
@@ -22,6 +22,16 @@ public class Cardápio {
 		return true;
 	}
 	
+    public String describeMenu(){
+        String retorno = "";
+
+        for (Item item:cardapio){
+            retorno = retorno + item.toString() + "\n";
+
+        }
+
+        return retorno;
+    }
 
 	
 	
