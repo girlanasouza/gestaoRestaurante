@@ -9,8 +9,6 @@ public class Main {
 		
 
 		Mesa mesa1 = new Mesa(101, false);
-
-		System.out.println(mesa1.toString());
 		
 		Cardapio cardapio1 = new Cardapio();
 
@@ -18,7 +16,11 @@ public class Main {
 		pedido1.addItensMenu(item1);
 		pedido1.addItem(item2);
 
-		System.out.println(pedido1.getDescribe());
+		FechamentoConta fechamentoConta = new FechamentoConta(pedido1);
+
+		System.out.println(fechamentoConta.getDescribe());
+
+		// System.out.println(pedido1.getDescribe());
 
 		
 		// cardapio1.addItem(item1);

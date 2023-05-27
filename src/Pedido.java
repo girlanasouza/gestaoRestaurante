@@ -46,9 +46,7 @@ public class Pedido {
         return this.waiter;
     }
     
-    public double getTotalConta(){
-        return this.totalConta;
-    }
+    
     public String getDescribe(){
         String retorno = "";
 
@@ -56,8 +54,15 @@ public class Pedido {
             retorno = retorno + item.toString()+"\n";
             this.totalConta+=item.getValue();
         }
-        retorno=retorno+this.waiter.toString()+table.toString()+"Total da conta: "+getTotalConta();
+        retorno=retorno+this.waiter.toString()+table.toString()+"Total da conta: "+this.totalConta;
         return retorno;
+    }
+
+    public double getTotalConta(){
+        for(Item item:itens){
+            this.totalConta+=item.getValue();
+        }
+        return this.totalConta;
     }
 
 
