@@ -1,5 +1,3 @@
-
-
 public class Garcon {
 	
 	private String name;

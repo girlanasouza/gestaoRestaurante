@@ -4,6 +4,7 @@ public class Main {
 	public static void main(String args[]) {
 		Garcon waiter1 = new Garcon ("Girlana", 1, "Barbosa Fillho");
 		Garcon waiter2 = new Garcon ("Girlana", 2, "Barbosa Fillho");
+		Garcon waiter3 = new  Garcon ("natan", 3, "rua oito");
 		Item item1 = new Item("Carbonara", "Carbonara com bacon fresco", 30);
 		Item item2 = new Item("Tartare de Salmão", "Tartare de salmão com gema", 50);
 		
@@ -18,36 +19,16 @@ public class Main {
 
 		FechamentoConta fechamentoConta = new FechamentoConta(pedido1, 100.2);
 
+		CardapioInterface cardapioInterface = new CardapioInterface();
 
-		System.out.println(fechamentoConta.getDescribe());
+		cardapioInterface.setVisible(true);
 
-		// System.out.println(pedido1.getDescribe());
+
+//		System.out.println(fechamentoConta.getDescribe());
+//		FechamentoContaInterface garconInterface = new FechamentoContaInterface();
+//	    garconInterface.exibirFechamentoConta(fechamentoConta);
 
 		
-		// cardapio1.addItem(item1);
-		// cardapio1.addItem(item2);
-
-		// System.out.println(cardapio1.describeMenu());
-
-		// cardapio1.describeMenu();
-
-		// FunctionGarcon function = new FunctionGarcon();
-
-		// System.out.println(waiter1.toString());
-		
-		// if (function.registerWaiter(waiter1)==true){
-		// 	System.out.println("consegui!");
-		// }
-		// else {
-		// 	System.out.println("não consegui!");
-		// }
-		
-		// if (function.removeWaiter(waiter2.getId())==true){
-		// 	System.out.println("consegui!");
-		// }
-		// else {
-		// 	System.out.println("não consegui!");
-		// }
 	}
 
 }
