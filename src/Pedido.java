@@ -6,6 +6,7 @@ public class Pedido {
     private Mesa table;
     private Garcon waiter;
 
+
     public boolean addItensMenu(Item item){
         if(!itens.contains(item)){
             itens.add(item);
@@ -59,9 +60,6 @@ public class Pedido {
     }
 
     public double getTotalConta(){
-        for(Item item:itens){
-            this.totalConta+=item.getValue();
-        }
         return this.totalConta;
     }
 

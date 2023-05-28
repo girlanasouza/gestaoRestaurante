@@ -16,7 +16,8 @@ public class Main {
 		pedido1.addItensMenu(item1);
 		pedido1.addItem(item2);
 
-		FechamentoConta fechamentoConta = new FechamentoConta(pedido1);
+		FechamentoConta fechamentoConta = new FechamentoConta(pedido1, 100.2);
+
 
 		System.out.println(fechamentoConta.getDescribe());
 
