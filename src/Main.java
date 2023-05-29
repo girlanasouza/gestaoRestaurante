@@ -1,34 +1,29 @@
-
 public class Main {
-	
-	public static void main(String args[]) {
-		Garcon waiter1 = new Garcon ("Girlana", 1, "Barbosa Fillho");
-		Garcon waiter2 = new Garcon ("Girlana", 2, "Barbosa Fillho");
-		Garcon waiter3 = new  Garcon ("natan", 3, "rua oito");
-		Item item1 = new Item("Carbonara", "Carbonara com bacon fresco", 30);
-		Item item2 = new Item("Tartare de Salmão", "Tartare de salmão com gema", 50);
-		
 
-		Mesa mesa1 = new Mesa(101, false);
-		
-		Cardapio cardapio1 = new Cardapio();
+    public static void main(String args[]) {
+        Garcon waiter1 = new Garcon("Girlana", 1, "Barbosa Fillho");
+        Garcon waiter2 = new Garcon("Girlana", 2, "Barbosa Fillho");
+        Garcon waiter3 = new Garcon("natan", 3, "rua oito");
+        Item item1 = new Item("Carbonara", "Carbonara com bacon fresco", 30);
+        Item item2 = new Item("Tartare de Salmão", "Tartare de salmão com gema", 50);
 
-		Pedido pedido1 = new Pedido(mesa1, waiter2);
-		pedido1.addItensMenu(item1);
-		pedido1.addItem(item2);
+        Mesa mesa1 = new Mesa(101, false);
 
-		FechamentoConta fechamentoConta = new FechamentoConta(pedido1, 100.2);
+        Cardapio cardapio1 = new Cardapio();
+        
+        cardapio1.addItem(item2);
+        cardapio1.addItem(item1);
 
-		CardapioInterface cardapioInterface = new CardapioInterface();
+        Pedido pedido1 = new Pedido(mesa1, waiter2);
+        pedido1.addItensMenu(item1);
+        pedido1.addItem(item2);
 
-		cardapioInterface.setVisible(true);
+        FechamentoConta fechamentoConta = new FechamentoConta(pedido1, 100.2);
 
-
-//		System.out.println(fechamentoConta.getDescribe());
-//		FechamentoContaInterface garconInterface = new FechamentoContaInterface();
-//	    garconInterface.exibirFechamentoConta(fechamentoConta);
-
-		
-	}
+        MainInterface f1 = new MainInterface();
+        f1.setCardapio(cardapio1); // Pass the Cardapio object to MainInterface
+        f1.setVisible(true);
+//        System.out.println(cardapio1.describeMenu());
+    }
 
 }

@@ -1,50 +1,42 @@
 import java.awt.Color;
-
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.*;
-import javax.swing.UIManager;
-import javax.swing.UnsupportedLookAndFeelException;
 
-public class FechamentoContaInterface extends javax.swing.JFrame {
+public class MainInterface extends javax.swing.JFrame {
 
-    private JFrame frame;
-    private JTextArea textArea;
+    private Cardapio cardapio;
 
-    public FechamentoContaInterface() {
-        try {
-            // Definir o look and feel do sistema operacional
-            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException ex) {
-            ex.printStackTrace();
-        }
-        
-        createUI();
+    public MainInterface() {
+        super("TELA PRINCIPAL");
+        setLayout(null);
+        setSize(500, 300);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        JLabel title = new JLabel("Tela Principal");
+        title.setBounds(0, 10, 500, 30);
+        title.setHorizontalAlignment(SwingConstants.CENTER);
+        add(title);
+
+        JButton bMenu = new JButton("Menu");
+        bMenu.setBounds(20, 55, 220, 25);
+        add(bMenu);
+
+        bMenu.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                if (cardapio != null) {
+                    CardapioInterface menuInterface = new CardapioInterface(cardapio);
+                    menuInterface.setVisible(true);
+                } else {
+                    JOptionPane.showMessageDialog(null, "Cardápio não definido.");
+                }
+            }
+        });
+
+        setVisible(true);
     }
 
-    private void createUI() {
-        // Criando a janela principal
-        frame = new JFrame("Fechamento do pedido");
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(400, 300);
-
-        // Adicionando uma área de texto para exibir os dados
-        textArea = new JTextArea();
-        textArea.setEditable(false); // Impedir que o texto seja editado
-        
-        Color cor = new Color(255, 229, 153);
-
-        textArea.setBackground(new Color(255, 229, 153)); 
-        JScrollPane scrollPane = new JScrollPane(textArea); // Adicionar um scroll à área de texto
-        frame.getContentPane().add(scrollPane);
-        
-        JButton button = new JButton("Clique aqui");
-        button.setForeground(cor);
-
-
-        // Exibindo a janela
-        frame.setVisible(true);
-    }
-
-    public void exibirFechamentoConta(FechamentoConta fechamentoConta) {
-        textArea.setText(fechamentoConta.getDescribe());
+    public void setCardapio(Cardapio cardapio) {
+        this.cardapio = cardapio;
     }
 }

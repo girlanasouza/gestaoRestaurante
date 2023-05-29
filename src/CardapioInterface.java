@@ -1,34 +1,40 @@
-import java.awt.*;
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
 
 public class CardapioInterface extends JFrame {
-	
-	public CardapioInterface() {
-		super("Cardápio");
-		Color cor = new Color(255, 229, 153);
-		setLayout(null);
-		setSize(500, 300);
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		
-		JLabel title = new JLabel("Cardápio");
-		title.setBounds(0, 10, 500, 30);
-		title.setHorizontalAlignment(SwingConstants.CENTER);
-		add(title);
+    private Cardapio cardapio;
 
-		JButton bMenu = new JButton("Cardápio");
-		bMenu.setBounds(20, 55, 220, 25);
-		bMenu.setBackground(cor);
-		add(bMenu);
+    public CardapioInterface(Cardapio cardapio) {
+        super("Cardápio");
+        Color cor = new Color(255, 229, 153);
+        
+        setLayout(null);
+        setSize(500, 300);
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        
+        JLabel title = new JLabel("Cardápio");
+        title.setBounds(0, 10, 500, 30);
+        title.setHorizontalAlignment(SwingConstants.CENTER);
+        add(title);
 
-		bMenu.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				JOptionPane.showMessageDialog(null, "Jedi Academy v1.0 !!");
-			}
-		});
+        JButton bMenu = new JButton("Cardápio");
+        bMenu.setBounds(20, 55, 220, 25);
+        bMenu.setBackground(cor);
+        add(bMenu);
 
-		setVisible(true);
-	}
+        bMenu.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                if (cardapio != null) {
+                    String description = cardapio.describeMenu();
+                    JOptionPane.showMessageDialog(null, description);
+                } else {
+                    JOptionPane.showMessageDialog(null, "Cardápio não definido.");
+                }
+            }
+        });
 
+        setVisible(true);
+    }
 }
