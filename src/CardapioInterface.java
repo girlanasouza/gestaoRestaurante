@@ -11,7 +11,9 @@ public class CardapioInterface extends JFrame {
         Color cor = new Color(255, 229, 153);
         
         setLayout(null);
+        
         setSize(500, 300);
+        
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         
         JLabel title = new JLabel("Cardápio");
@@ -27,7 +29,7 @@ public class CardapioInterface extends JFrame {
         bMenu.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 if (cardapio != null) {
-                    String description = cardapio.describeMenu();
+                    MenuInterface menuInterface = cardapio.describeMenu();
                     JOptionPane.showMessageDialog(null, description);
                 } else {
                     JOptionPane.showMessageDialog(null, "Cardápio não definido.");
