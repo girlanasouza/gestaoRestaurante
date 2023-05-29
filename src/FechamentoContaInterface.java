@@ -4,8 +4,9 @@ import java.awt.event.ActionListener;
 import javax.swing.*;
 
 public class FechamentoContaInterface extends javax.swing.JFrame {
-	
-	public FechamentoContaInterface(){
+	private Cardapio cardapio;
+
+	public FechamentoContaInterface(Cardapio cardapio){
 		super("Fechamento de Conta");
 		setLayout(null);
 		setSize(500, 300);
@@ -23,7 +24,7 @@ public class FechamentoContaInterface extends javax.swing.JFrame {
 
 		bMenu.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-			CardapioInterface menuInterface = new CardapioInterface();
+			CardapioInterface menuInterface = new CardapioInterface(cardapio);
 			menuInterface.setVisible(true);
 			}
 		});

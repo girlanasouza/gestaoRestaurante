@@ -23,6 +23,7 @@ public class Main {
         MainInterface f1 = new MainInterface();
         f1.setCardapio(cardapio1); // Pass the Cardapio object to MainInterface
         f1.setVisible(true);
+       
 //        System.out.println(cardapio1.describeMenu());
     }
 

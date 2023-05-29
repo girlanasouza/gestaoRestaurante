@@ -1,4 +1,5 @@
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
@@ -10,8 +11,17 @@ public class MainInterface extends javax.swing.JFrame {
     public MainInterface() {
         super("TELA PRINCIPAL");
         setLayout(null);
-        setSize(500, 300);
+        // setSize(500, 300);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        Dimension maxSize = new Dimension(500, 800);
+        
+        setSize(maxSize);
+
+        setPreferredSize(maxSize);
+
+        setResizable(true);
+
 
         JLabel title = new JLabel("Tela Principal");
         title.setBounds(0, 10, 500, 30);
@@ -34,6 +44,8 @@ public class MainInterface extends javax.swing.JFrame {
         });
 
         setVisible(true);
+        setLocationRelativeTo(null);
+        // setVisible(true);
     }
 
     public void setCardapio(Cardapio cardapio) {

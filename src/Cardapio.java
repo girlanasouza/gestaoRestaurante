@@ -10,6 +10,10 @@ public class Cardapio {
 		}
 		return false;
 	}
+
+	public ArrayList<Item> getCardapio() {
+		return cardapio;
+	}
 	
 	public boolean removeItem(Item item) {
 		if(!cardapio.contains(item)) {
