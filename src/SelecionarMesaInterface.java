@@ -10,11 +10,11 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 
-public class RealizarPedidoInterface extends JFrame {
+public class SelecionarMesaInterface extends JFrame {
     private BancoMesas mesas;
 
-    public RealizarPedidoInterface(BancoMesas mesas){
-        super("Realizar Pedido");
+    public SelecionarMesaInterface(BancoMesas mesas){
+        super("Selecionar Mesa");
         this.mesas=mesas;
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         
@@ -39,7 +39,7 @@ public class RealizarPedidoInterface extends JFrame {
         principalPanel.add(titleJLabel, BorderLayout.CENTER);
 
         if(mesas!=null){
-            ArrayList<Mesa>
+            
 
         }
     }

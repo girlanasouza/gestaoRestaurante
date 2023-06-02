@@ -32,6 +32,12 @@ public class MainInterface extends javax.swing.JFrame {
         bMenu.setBounds(20, 55, 220, 25);
         add(bMenu);
 
+        JButton bCadastrarCardapio = new JButton("Cadastrar Cardapio");
+        bCadastrarCardapio.setBounds(20, 90, 220, 25);
+        add(bCadastrarCardapio);
+        
+
+
         bMenu.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 if (cardapio != null) {
@@ -40,6 +46,13 @@ public class MainInterface extends javax.swing.JFrame {
                 } else {
                     JOptionPane.showMessageDialog(null, "Cardápio não definido.");
                 }
+            }
+        });
+
+        bCadastrarCardapio.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent event){
+                CadastrarItemCardapioInterface cadastrarCardapioInterface = new CadastrarItemCardapioInterface(cardapio);
+                cadastrarCardapioInterface.setVisible(true);
             }
         });
 

@@ -40,7 +40,10 @@ public class Item {
 	"Valor: "+getValue()+"\n";
 		return retorno;
 	}
-	
-	
 
+	public boolean isBlank() {
+		return name.isEmpty() && describe.isEmpty() && value == 0;
+	}
+	
+	
 }

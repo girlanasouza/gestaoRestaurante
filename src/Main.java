@@ -7,6 +7,14 @@ public class Main {
         Item item1 = new Item("Carbonara", "Carbonara com bacon fresco", 30);
         Item item2 = new Item("Tartare de Salmão", "Tartare de salmão com gema", 50);
 
+        Item item3 = new Item("", "", 0);
+
+        if (item3.isBlank()) {
+            System.out.println("O item está vazio");
+        } else {
+            System.out.println("O item não está vazio");
+        }
+        
         Mesa mesa1 = new Mesa(101, false);
         Mesa mesa2 = new Mesa(102, true);
 
@@ -27,11 +35,11 @@ public class Main {
 
         System.out.println(bancoMesas.getDescribe());
 
-        // MainInterface f1 = new MainInterface();
-        // f1.setCardapio(cardapio1); // Pass the Cardapio object to MainInterface
-        // f1.setVisible(true);
+        MainInterface f1 = new MainInterface();
+        f1.setCardapio(cardapio1); // Pass the Cardapio object to MainInterface
+        f1.setVisible(true);
        
-//        System.out.println(cardapio1.describeMenu());
+       System.out.println(cardapio1.describeMenu());
     }
 
 }

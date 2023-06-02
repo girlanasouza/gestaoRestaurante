@@ -40,12 +40,12 @@ public class CardapioInterface extends JFrame {
         principal.setLayout((new BoxLayout(principal, BoxLayout.Y_AXIS)));
 
         JPanel panelEsquerda = new JPanel();
-        panelEsquerda.setBackground(cor);
+        panelEsquerda.setBackground(Color.PINK);
         panelEsquerda.setLayout(new FlowLayout(FlowLayout.RIGHT));
         
 
         JPanel panelDireita = new JPanel();
-        panelDireita.setBackground(cor);
+        panelDireita.setBackground(Color.BLUE);
         panelDireita.setLayout(new BorderLayout());
         
 

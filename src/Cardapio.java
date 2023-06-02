@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 
 public class Cardapio {
-	ArrayList <Item> cardapio = new ArrayList<Item>();
+	private ArrayList <Item> cardapio = new ArrayList<Item>();
 	
 	public boolean addItem(Item item) {
 		if(!cardapio.contains(item)) {
@@ -10,6 +10,8 @@ public class Cardapio {
 		}
 		return false;
 	}
+
+
 
 	public ArrayList<Item> getCardapio() {
 		return cardapio;
