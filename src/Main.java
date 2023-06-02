@@ -8,6 +8,11 @@ public class Main {
         Item item2 = new Item("Tartare de Salmão", "Tartare de salmão com gema", 50);
 
         Mesa mesa1 = new Mesa(101, false);
+        Mesa mesa2 = new Mesa(102, true);
+
+        BancoMesas bancoMesas = new BancoMesas();
+        bancoMesas.addMesa(mesa1);
+        bancoMesas.addMesa(mesa2);
 
         Cardapio cardapio1 = new Cardapio();
         
@@ -20,9 +25,11 @@ public class Main {
 
         FechamentoConta fechamentoConta = new FechamentoConta(pedido1, 100.2);
 
-        MainInterface f1 = new MainInterface();
-        f1.setCardapio(cardapio1); // Pass the Cardapio object to MainInterface
-        f1.setVisible(true);
+        System.out.println(bancoMesas.getDescribe());
+
+        // MainInterface f1 = new MainInterface();
+        // f1.setCardapio(cardapio1); // Pass the Cardapio object to MainInterface
+        // f1.setVisible(true);
        
 //        System.out.println(cardapio1.describeMenu());
     }

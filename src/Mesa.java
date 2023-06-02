@@ -43,7 +43,7 @@ public class Mesa {
 	}
 
 	public String toString(){
-		String retorno = "Número de mesa: "+getNumberTable()+"\n";
+		String retorno = "Número de mesa: "+getNumberTable()+"\n"+verify()+"\n";
 
 		return retorno;
 

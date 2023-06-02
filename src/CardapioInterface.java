@@ -92,6 +92,10 @@ public class CardapioInterface extends JFrame {
                
             }
         });
+
+        JButton realizarPedidButton = new JButton("Realizar Pedido", null);
+        realizarPedidButton.setBounds(20, 55, 220, 25);
+        
         
 
         principal.add(painelCardapio);
@@ -100,7 +104,9 @@ public class CardapioInterface extends JFrame {
         principal.add(panelDireita);
         principal.add(panelEsquerda);
 
+        
         panelEsquerda.add(voltaMenuButton);
+        panelEsquerda.add(realizarPedidButton);
         add(principal);
 
         setLocationRelativeTo(null);
