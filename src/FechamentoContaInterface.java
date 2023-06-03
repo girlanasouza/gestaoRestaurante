@@ -1,10 +1,14 @@
-import java.awt.Color;
+// import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
 
 public class FechamentoContaInterface extends javax.swing.JFrame {
 	private Cardapio cardapio;
+
+	public Cardapio getCardapio(){
+		return this.cardapio;
+	}
 
 	public FechamentoContaInterface(Cardapio cardapio){
 		super("Fechamento de Conta");

@@ -13,13 +13,15 @@ import javax.swing.JOptionPane;
 public class CadastrarItemCardapioInterface extends JFrame {
     private Cardapio cardapio;
 
+    public Cardapio getCardapio(){
+        return this.cardapio;
+    }
+
     public CadastrarItemCardapioInterface(Cardapio cardapio) {
         super("Cadastro de Cardápio");
         this.cardapio = cardapio;
 
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-
-        Color cor = new Color(247, 246, 245);
 
         Dimension maxSize = new Dimension(500, 800);
 
@@ -37,11 +39,13 @@ public class CadastrarItemCardapioInterface extends JFrame {
         itemField.setEditable(true);
 
         JLabel descricaoItem = new JLabel("Descrição do Item");
+
         JTextField descricaoItemField = new JTextField();
         descricaoItemField.setBackground(Color.YELLOW);
         descricaoItemField.setEditable(true);
 
         JLabel valueItem = new JLabel("Valor do Item");
+
         JTextField valueItemField = new JTextField();
         valueItemField.setBackground(Color.GREEN);
         valueItemField.setEditable(true);
@@ -61,6 +65,9 @@ public class CadastrarItemCardapioInterface extends JFrame {
                     double valor = Double.parseDouble(valorText);
                     Item item = new Item(nome, descricao, valor);
                     cardapio.addItem(item);
+                    itemField.setText("");
+                    descricaoItemField.setText("");
+                    valueItemField.setText("");
                     JOptionPane.showMessageDialog(null, "Item cadastrado com sucesso!");
                 }
             }

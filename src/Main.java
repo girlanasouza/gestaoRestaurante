@@ -1,19 +1,12 @@
 public class Main {
 
     public static void main(String args[]) {
-        Garcon waiter1 = new Garcon("Girlana", 1, "Barbosa Fillho");
-        Garcon waiter2 = new Garcon("Girlana", 2, "Barbosa Fillho");
-        Garcon waiter3 = new Garcon("natan", 3, "rua oito");
+        Garcom waiter1 = new Garcom("Girlana", 1, "Barbosa Fillho");
+        Garcom waiter2 = new Garcom("Girlana", 2, "Barbosa Fillho");
+        Garcom waiter3 = new Garcom("natan", 3, "rua oito");
         Item item1 = new Item("Carbonara", "Carbonara com bacon fresco", 30);
         Item item2 = new Item("Tartare de Salmão", "Tartare de salmão com gema", 50);
-
-        Item item3 = new Item("", "", 0);
-
-        if (item3.isBlank()) {
-            System.out.println("O item está vazio");
-        } else {
-            System.out.println("O item não está vazio");
-        }
+        Item item3 = new Item("Pizza de Banana", "Pizza de banana da terra com canela", 50);
         
         Mesa mesa1 = new Mesa(101, false);
         Mesa mesa2 = new Mesa(102, true);
@@ -26,6 +19,7 @@ public class Main {
         
         cardapio1.addItem(item2);
         cardapio1.addItem(item1);
+        cardapio1.addItem(item3);
 
         Pedido pedido1 = new Pedido(mesa1, waiter2);
         pedido1.addItensMenu(item1);
@@ -35,9 +29,16 @@ public class Main {
 
         System.out.println(bancoMesas.getDescribe());
 
-        MainInterface f1 = new MainInterface();
-        f1.setCardapio(cardapio1); // Pass the Cardapio object to MainInterface
+
+
+        BancoGarcom bancoGarcom = new BancoGarcom();
+        bancoGarcom.inserirGarcom(waiter3);
+        MainInterface f1 = new MainInterface(cardapio1, bancoGarcom);
+        // f1.setCardapio(cardapio1); // Pass the Cardapio object to MainInterface
         f1.setVisible(true);
+
+        System.out.println(bancoGarcom.getDrescribe());
+
        
        System.out.println(cardapio1.describeMenu());
     }

@@ -1,8 +1,6 @@
 import java.awt.BorderLayout;
-import java.awt.Color;
+// import java.awt.Color;
 import java.awt.Dimension;
-import java.util.*;
-
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
 import javax.swing.JFrame;
@@ -13,12 +11,14 @@ import javax.swing.JPanel;
 public class SelecionarMesaInterface extends JFrame {
     private BancoMesas mesas;
 
+    public BancoMesas getBancoMesas(){
+        return this.mesas;
+    }
+
     public SelecionarMesaInterface(BancoMesas mesas){
         super("Selecionar Mesa");
         this.mesas=mesas;
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        
-        Color cor = new Color(247, 246, 245);
 
         Dimension maxSize = new Dimension(500, 800);
 

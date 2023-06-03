@@ -1,11 +1,11 @@
-public class Garcon {
+public class Garcom {
 	
 	private String name;
 	private int id;
 	private String address;
 	
 
-	public Garcon(String name, int id, String address) {
+	public Garcom(String name, int id, String address) {
 		this.name=name;
 		this.id=id;
 		this.address=address;
@@ -38,7 +38,7 @@ public class Garcon {
 		this.address=address;
 	}
 	
-	public boolean equals(Garcon g) {
+	public boolean equals(Garcom g) {
 		if(this.id==g.id) {
 			return true;
 		}

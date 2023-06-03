@@ -4,7 +4,7 @@ public class Pedido {
     private ArrayList<Item> itens = new ArrayList<>();
     private double totalConta=0;
     private Mesa table;
-    private Garcon waiter;
+    private Garcom garcom;
 
 
     public boolean addItensMenu(Item item){
@@ -26,13 +26,13 @@ public class Pedido {
 		return false;
 	}
 
-    public Pedido(Mesa table, Garcon waiter){
+    public Pedido(Mesa table, Garcom garcom){
         this.table=table;
-        this.waiter=waiter;
+        this.garcom=garcom;
     }
 
-    public void setWaiter(Garcon waiter){
-        this.waiter = waiter;
+    public void setgarcom(Garcom garcom){
+        this.garcom = garcom;
     }
 
     public void setTable(Mesa table){
@@ -43,8 +43,8 @@ public class Pedido {
         return this.table;
     }
 
-    public Garcon getGarcon(){
-        return this.waiter;
+    public Garcom getGarcom(){
+        return this.garcom;
     }
     
     
@@ -55,7 +55,7 @@ public class Pedido {
             retorno = retorno + item.toString()+"\n";
             this.totalConta+=item.getValue();
         }
-        retorno=retorno+this.waiter.toString()+table.toString()+"Total da conta: "+this.totalConta;
+        retorno=retorno+this.garcom.toString()+table.toString()+"Total da conta: "+this.totalConta;
         return retorno;
     }
 

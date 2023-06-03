@@ -1,16 +1,16 @@
 import java.util.ArrayList;
 
-public class FunctionGarcon {
+public class FunctionGarcom {
 	
-	private ArrayList<Garcon> waiters = new ArrayList<>();
+	private ArrayList<Garcom> waiters = new ArrayList<>();
 	
-	public boolean registerWaiter(Garcon g) {
+	public boolean registerWaiter(Garcom g) {
 		
 		
 		if (waiters.contains(g)) {
 	        return false;
 	    } else {
-	        for (Garcon waiter : waiters) {
+	        for (Garcom waiter : waiters) {
 	            if (waiter.equals(g)) {
 	                return false;
 	            }
@@ -23,7 +23,7 @@ public class FunctionGarcon {
 	}
 	
 	public boolean removeWaiter(int id) {
-	    for (Garcon g : waiters) {
+	    for (Garcom g : waiters) {
 	        if (g.getId()==id) {
 	            waiters.remove(g);  
 	            return true;
@@ -34,7 +34,7 @@ public class FunctionGarcon {
 
 	
 	public boolean changeWaiter(int id, String name, String address) {
-		for(Garcon w : waiters) {
+		for(Garcom w : waiters) {
 			if(w.getId()==id) {
 				w.setName(name);
 				w.setAddress(address);

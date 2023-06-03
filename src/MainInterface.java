@@ -1,4 +1,3 @@
-import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -7,8 +6,9 @@ import javax.swing.*;
 public class MainInterface extends javax.swing.JFrame {
 
     private Cardapio cardapio;
+    private BancoGarcom bancoGarcom;
 
-    public MainInterface() {
+    public MainInterface(Cardapio cardapio,BancoGarcom bancoGarcom ) {
         super("TELA PRINCIPAL");
         setLayout(null);
         // setSize(500, 300);
@@ -28,17 +28,21 @@ public class MainInterface extends javax.swing.JFrame {
         title.setHorizontalAlignment(SwingConstants.CENTER);
         add(title);
 
-        JButton bMenu = new JButton("Menu");
-        bMenu.setBounds(20, 55, 220, 25);
-        add(bMenu);
+        JButton menuButton = new JButton("Menu");
+        menuButton.setBounds(20, 55, 220, 25);
+        add(menuButton);
 
-        JButton bCadastrarCardapio = new JButton("Cadastrar Cardapio");
-        bCadastrarCardapio.setBounds(20, 90, 220, 25);
-        add(bCadastrarCardapio);
+        JButton cadastrarCardapioButton = new JButton("Cadastrar Cardapio");
+        cadastrarCardapioButton.setBounds(20, 90, 220, 25);
+        add(cadastrarCardapioButton);
+
+        JButton cadastrarGarcomButton= new JButton("Cadastrar Garçom");
+        cadastrarGarcomButton.setBounds(20, 125, 220, 25);
+        add(cadastrarGarcomButton);
         
 
 
-        bMenu.addActionListener(new ActionListener() {
+        menuButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 if (cardapio != null) {
                     CardapioInterface menuInterface = new CardapioInterface(cardapio);
@@ -49,12 +53,21 @@ public class MainInterface extends javax.swing.JFrame {
             }
         });
 
-        bCadastrarCardapio.addActionListener(new ActionListener() {
+        cadastrarCardapioButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event){
                 CadastrarItemCardapioInterface cadastrarCardapioInterface = new CadastrarItemCardapioInterface(cardapio);
                 cadastrarCardapioInterface.setVisible(true);
             }
         });
+
+        cadastrarGarcomButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent event){
+                CadastrarGarcomInterface cadastrarGarcom = new CadastrarGarcomInterface(bancoGarcom);
+                cadastrarGarcom.setVisible(true);
+            }
+        });
+
+
 
         setVisible(true);
         setLocationRelativeTo(null);
@@ -63,5 +76,9 @@ public class MainInterface extends javax.swing.JFrame {
 
     public void setCardapio(Cardapio cardapio) {
         this.cardapio = cardapio;
+    }
+
+    public void setBancoGarcom(BancoGarcom bancoGarcom){
+        this.bancoGarcom=bancoGarcom;
     }
 }
