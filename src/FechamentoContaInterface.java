@@ -28,8 +28,8 @@ public class FechamentoContaInterface extends javax.swing.JFrame {
 
 		bMenu.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-			CardapioInterface menuInterface = new CardapioInterface(cardapio);
-			menuInterface.setVisible(true);
+			// CardapioInterface menuInterface = new CardapioInterface(cardapio);
+			// menuInterface.setVisible(true);
 			}
 		});
 		

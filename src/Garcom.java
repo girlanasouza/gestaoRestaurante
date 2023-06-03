@@ -5,6 +5,11 @@ public class Garcom {
 	private String address;
 	
 
+	public Garcom(){
+		this.name=null;
+		this.id=0;
+		this.address=null;
+	}
 	public Garcom(String name, int id, String address) {
 		this.name=name;
 		this.id=id;

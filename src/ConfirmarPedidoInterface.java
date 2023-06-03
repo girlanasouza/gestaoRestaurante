@@ -5,9 +5,9 @@ import javax.swing.*;
 
 public class ConfirmarPedidoInterface extends JFrame {
     private ArrayList<Item> itens;
-    private Pedido pedido;
     private BancoMesas bancoMesas;
     private BancoGarcom bancoGarcom;
+    
 
     private Mesa mesa;
     private Garcom garcom;
@@ -33,10 +33,6 @@ public class ConfirmarPedidoInterface extends JFrame {
         return this.bancoMesas;
     }
 
-    public Pedido getPedido(){
-        return this.pedido;
-    }
-
     public ArrayList<Item> getItens(){
         return this.itens;
     }
@@ -46,7 +42,7 @@ public class ConfirmarPedidoInterface extends JFrame {
 
 
     public ConfirmarPedidoInterface(ArrayList<Item> itens, BancoMesas bancoMesas, BancoGarcom bancoGarcom){
-        super("Confirmar Pedido");
+        super("Acompanhamento de Pedido");
         this.itens = itens;
         this.bancoMesas=bancoMesas;
         this.bancoGarcom=bancoGarcom;
@@ -75,8 +71,6 @@ public class ConfirmarPedidoInterface extends JFrame {
         panelBody.setBackground(Color.GREEN);
         panelBody.setMinimumSize(new Dimension(500, 600));
         panelBody.setLayout(new FlowLayout(FlowLayout.CENTER));
-
-        
 
         JPanel panelRodape = new JPanel();
         panelRodape.setBackground(Color.PINK);
@@ -109,7 +103,6 @@ public class ConfirmarPedidoInterface extends JFrame {
             JRadioButton radioGarcomButton = new JRadioButton(garcom.toString());
             checkBoxGroupGarcom.add(radioGarcomButton);
             panelBody.add(radioGarcomButton);
-
             radioGarcomButton.addItemListener(new ItemListener() {
                 @Override
                 public void itemStateChanged(ItemEvent e) {
@@ -136,15 +129,15 @@ public class ConfirmarPedidoInterface extends JFrame {
                     JOptionPane.showMessageDialog(null, "Selecione as opções desejadas!");
                 }
                 else{
-                    
-                    ConfirmarPedidoInterface.this.setVisible(false);
+                    Pedido pedido = new Pedido(ConfirmarPedidoInterface.this.getItens(), ConfirmarPedidoInterface.this.getMesa(), ConfirmarPedidoInterface.this.getGarcom(), "Feito");
+                    AcompanhamentoPedidoInterface acompanhamentoPedidoInterface = new AcompanhamentoPedidoInterface(pedido);
+                    JOptionPane.showMessageDialog(null, "Pedido Realizado com Sucesso!");
                 }
                 
             }
         });
 
 
-        
 
         panelPrincipal.add(panelHead);
         panelPrincipal.add(panelBody);

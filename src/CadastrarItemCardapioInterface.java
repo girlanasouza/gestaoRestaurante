@@ -63,7 +63,8 @@ public class CadastrarItemCardapioInterface extends JFrame {
                     JOptionPane.showMessageDialog(null, "Preencha todos os campos!");
                 } else {
                     double valor = Double.parseDouble(valorText);
-                    Item item = new Item(nome, descricao, valor);
+                    //arrumar id
+                    Item item = new Item(0,nome, descricao, valor);
                     cardapio.addItem(item);
                     itemField.setText("");
                     descricaoItemField.setText("");

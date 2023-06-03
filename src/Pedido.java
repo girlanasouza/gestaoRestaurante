@@ -5,13 +5,38 @@ public class Pedido {
     private double totalConta=0;
     private Mesa mesa;
     private Garcom garcom;
+    private String situacao;
 
-    public Pedido(ArrayList<Item> itens, Mesa mesa, Garcom garcom){
+    public Pedido(ArrayList<Item> itens, Mesa mesa, Garcom garcom, String situacao){
         itens = new ArrayList<>();
         this.mesa=mesa;
         this.garcom=garcom;
+        this.situacao=situacao;
+    }
+    
+    public void setgarcom(Garcom garcom){
+        this.garcom = garcom;
     }
 
+    public Garcom getGarcom(){
+        return this.garcom;
+    }
+
+    public void setMesa(Mesa mesa){
+        this.mesa=mesa;
+    }
+
+    public Mesa getMesa(){
+        return this.mesa;
+    }
+
+    public void setSitucao(String situacao){
+        this.situacao=situacao;
+    }
+
+    public String getSituacao(){
+        return this.situacao;
+    }
 
     public boolean addItemPedido(Item item){
         if(!itens.contains(item)){
@@ -42,24 +67,7 @@ public class Pedido {
     public Pedido(Mesa mesa, Garcom garcom){
         this.mesa=mesa;
         this.garcom=garcom;
-    }
-
-    public void setgarcom(Garcom garcom){
-        this.garcom = garcom;
-    }
-
-    public void setMesa(Mesa mesa){
-        this.mesa=mesa;
-    }
-
-    public Mesa getMesa(){
-        return this.mesa;
-    }
-
-    public Garcom getGarcom(){
-        return this.garcom;
-    }
-    
+    }    
     
     public String getDescribe(){
         String retorno = "";
@@ -68,17 +76,12 @@ public class Pedido {
             retorno = retorno + item.toString()+"\n";
             this.totalConta+=item.getValue();
         }
-        retorno=retorno+this.garcom.toString()+table.toString()+"Total da conta: "+this.totalConta;
+        retorno=retorno+this.garcom.toString()+mesa.toString()+"Total da conta: "+this.totalConta+"\n"+getSituacao();
         return retorno;
     }
 
     public double getTotalConta(){
         return this.totalConta;
     }
-
-    
-
-
-
 
 }
