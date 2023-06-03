@@ -41,9 +41,8 @@ public class CadastrarGarcomInterface  extends JFrame{
         principal.setLayout(new BoxLayout(principal, BoxLayout.Y_AXIS));
         
         setLocationRelativeTo(null);
-        setVisible(true);
 
-        JButton voltaMenuButton = new JButton("Voltar Menu", null);
+        JButton voltaMenuButton = new JButton("Voltar", null);
         voltaMenuButton.setBounds(20, 55, 220, 25);
 
         voltaMenuButton.addActionListener(new ActionListener() {
@@ -73,23 +72,20 @@ public class CadastrarGarcomInterface  extends JFrame{
 
         cadastrarGarcomButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-
-                int id = Integer.parseInt(idGarcomField.getText());
-                
-                if (nomeGarcomField.getText().isEmpty() || idGarcomField.getText().isEmpty() ||  enderecoGarcomField.getText().isEmpty()) {
+                if (nomeGarcomField.getText().isEmpty() || idGarcomField.getText().isEmpty() || enderecoGarcomField.getText().isEmpty()) {
                     JOptionPane.showMessageDialog(null, "Preencha todos os campos!");
                 } else {
+                    int id = Integer.parseInt(idGarcomField.getText());
                     Garcom garcom = new Garcom(nomeGarcomField.getText(), id, enderecoGarcomField.getText());
                     bancoGarcom.inserirGarcom(garcom);
                     nomeGarcomField.setText("");
                     idGarcomField.setText("");
                     enderecoGarcomField.setText("");
                     JOptionPane.showMessageDialog(null, "Garcom Cadastrado com Sucesso!");
-                }                 
-                
-               
+                }
             }
         });
+        
 
         JButton imprimirBancoGarcomButton = new JButton("Imprimir Banco Garcom");
         imprimirBancoGarcomButton.addActionListener(new ActionListener() {
@@ -98,7 +94,7 @@ public class CadastrarGarcomInterface  extends JFrame{
             }
         });
 
-        this.add(principal);
+        
         principal.add(nomeGarcomJLabel);
         principal.add(nomeGarcomField);
 
@@ -113,6 +109,8 @@ public class CadastrarGarcomInterface  extends JFrame{
         principal.add(voltaMenuButton);
         principal.add(cadastrarGarcomButton);
         principal.add(imprimirBancoGarcomButton);
+
+        this.add(principal);
         setVisible(true);
     }
 }

@@ -1,8 +1,11 @@
 import java.util.ArrayList;
 
 public class BancoMesas {
+    private ArrayList <Mesa> mesas;
 
-    private ArrayList <Mesa> mesas = new ArrayList<Mesa>();
+    public BancoMesas(){
+        this.mesas = new ArrayList<Mesa>();
+    }
 
     public boolean addMesa(Mesa mesa){
         if(!mesas.contains(mesa)){
@@ -14,12 +17,6 @@ public class BancoMesas {
 
     public ArrayList <Mesa> getMesa(){
         return this.mesas;
-    }
-
-    //torna a mesa disponível 
-    public boolean mesaDisponivel(Mesa mesa){
-        mesa.setAvaliableTable(true);
-        return true;
     }
 
     //mostrar todas as mesas

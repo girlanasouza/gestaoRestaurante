@@ -9,13 +9,17 @@ public class Mesa {
 	}
 	
 	public boolean verifyAvaliableTable() {
-		if(this.avaliableTable=!true) {
-			return true;
-		}
-		else {
+		if(this.avaliableTable!=true) {
 			return false;
 		}
+
+		return true;
+		
 	}
+
+	public void mesaDisponivel(){
+        setAvaliableTable(true);
+    }
 
 	public void setNumberTable(int numberTable){
 		this.numberTable=numberTable;
@@ -34,12 +38,11 @@ public class Mesa {
 	}
 
 	public String verify(){
-		if(avaliableTable==true){
-			return "mesa disponível";
+		if(getAvaliableTable()==true){
+			return ", mesa disponível";
 		}
-		else{
-			return "mesa não disponível";
-		}
+		return ", mesa não disponível";
+
 	}
 
 	public String toString(){

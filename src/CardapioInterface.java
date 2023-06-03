@@ -1,31 +1,42 @@
-import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Component;
-import java.awt.Dimension;
-import java.awt.FlowLayout;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.util.ArrayList;
-
-import javax.swing.BorderFactory;
-import javax.swing.BoxLayout;
-import javax.swing.JButton;
-import javax.swing.JCheckBox;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.SwingConstants;
+import java.awt.*;
+import java.awt.event.*;
+import java.util.*;
+import javax.swing.*;
 
 public class CardapioInterface extends JFrame {
     private Cardapio cardapio;
+    private ArrayList <Item> itens;
+    private BancoMesas bancoMesas;
+    private BancoGarcom  bancoGarcom;
+    
+
+    public ArrayList<Item> getItens(){
+        return this.itens;
+    }
+
+    public void setItens(ArrayList<Item> itens){
+        this.itens=itens;
+    }
 
     public Cardapio getCardapio(){
         return this.cardapio;
     }
 
-    public CardapioInterface(Cardapio cardapio) {
+    public BancoMesas getBancoMesas(){
+        return this.bancoMesas;
+    }
+
+    public BancoGarcom getBancoGarcom(){
+        return this.bancoGarcom;
+    }
+
+    public CardapioInterface(Cardapio cardapio, BancoMesas bancoMesas, BancoGarcom bancoGarcons) {
         super("Cardápio");
+        itens = new ArrayList<Item>();
         this.cardapio = cardapio;
+        this.bancoMesas=bancoMesas;
+        this.bancoGarcom = bancoGarcons;
+
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
         Dimension maxSize = new Dimension(500, 800);
@@ -71,7 +82,6 @@ public class CardapioInterface extends JFrame {
         panelMeio.setBackground(Color.GREEN);
         panelMeio.setLayout(new BoxLayout(panelMeio, BoxLayout.Y_AXIS));
 
-
         if (cardapio != null) {
             ArrayList<Item> opcoesCardapio = cardapio.getCardapio();
             for (Item item : opcoesCardapio) {
@@ -79,6 +89,19 @@ public class CardapioInterface extends JFrame {
                 checkBox.isBackgroundSet();
                 checkBox.setAlignmentX(Component.CENTER_ALIGNMENT);
                 checkBox.setBorder(BorderFactory.createEmptyBorder(50  ,50,50,50));
+                checkBox.addActionListener(new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent arg0) {
+                        controlaPedido();
+                    }
+                    private void controlaPedido(){
+                        if(checkBox.isSelected()){
+                            CardapioInterface.this.getItens().add(item);
+                        }else{
+                            CardapioInterface.this.getItens().remove(item);
+                        }
+                    }
+                });
                 panelMeio.add(checkBox);
             }
         }
@@ -93,8 +116,32 @@ public class CardapioInterface extends JFrame {
             }
         });
 
-        JButton realizarPedidButton = new JButton("Realizar Pedido", null);
-        realizarPedidButton.setBounds(20, 55, 220, 25);
+        JButton realizarPedidoButton = new JButton("Realizar Pedido", null);
+        realizarPedidoButton.setBounds(20, 55, 220, 25);
+        realizarPedidoButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                if(CardapioInterface.this.getItens().size()==0){
+                    JOptionPane.showMessageDialog(null, "Selecione as opções desejadas!");
+                }
+                else{
+                    ConfirmarPedidoInterface confirmarPedidoInterface =  new ConfirmarPedidoInterface(CardapioInterface.this.getItens(), CardapioInterface.this.getBancoMesas(),
+                    CardapioInterface.this.getBancoGarcom());
+                    confirmarPedidoInterface.setVisible(true);
+               
+                }
+            }
+        });
+
+        realizarPedidoButton.addMouseListener(new MouseAdapter(){
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e);
+                for(Item i: CardapioInterface.this.getItens()){
+                    System.out.println(i.getDescribe());
+                }
+            }
+        });
+
         
         principal.add(painelCardapio);
         principal.add(panelMeio);
@@ -103,8 +150,9 @@ public class CardapioInterface extends JFrame {
 
         
         panelEsquerda.add(voltaMenuButton);
-        panelEsquerda.add(realizarPedidButton);
+        panelEsquerda.add(realizarPedidoButton);
         add(principal);
+        // add(panelEsquerda);
 
         setLocationRelativeTo(null);
         setVisible(true);

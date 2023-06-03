@@ -47,7 +47,7 @@ public class Garcom {
 	}
 
 	public String toString(){
-		String describe = "Nome do Garçon: "+getName()+"\n"+"Id Garçon: "+getId()+"\n";
+		String describe = "Nome do Garçon: "+getName()+"\n"+" Id Garçon: "+getId()+"\n";
 		return describe;
 	}
 	

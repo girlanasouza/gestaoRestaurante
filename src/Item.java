@@ -44,6 +44,20 @@ public class Item {
 	public boolean isBlank() {
 		return name.isEmpty() && describe.isEmpty() && value == 0;
 	}
+
+	public boolean equals(Item item){
+		if(this.name!=item.name){
+			return false;
+		}
+		if(this.describe!=item.describe){
+			return false;
+		}
+		if(this.value!=item.value){
+			return false;
+		}
+		return true;
+
+	}
 	
 	
 }

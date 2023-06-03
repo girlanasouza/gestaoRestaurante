@@ -3,18 +3,31 @@ import java.util.ArrayList;
 public class Pedido {
     private ArrayList<Item> itens = new ArrayList<>();
     private double totalConta=0;
-    private Mesa table;
+    private Mesa mesa;
     private Garcom garcom;
 
+    public Pedido(ArrayList<Item> itens, Mesa mesa, Garcom garcom){
+        itens = new ArrayList<>();
+        this.mesa=mesa;
+        this.garcom=garcom;
+    }
 
-    public boolean addItensMenu(Item item){
+
+    public boolean addItemPedido(Item item){
         if(!itens.contains(item)){
             itens.add(item);
             return true;
         }
-        
         return false;
         
+    }
+
+    public void removeItemPedido(Item item){
+        for(Item i:itens){
+            if(i.equals(item)){
+                itens.remove(i);
+            }
+        }
     }
     
     public boolean addItem(Item item) {
@@ -26,8 +39,8 @@ public class Pedido {
 		return false;
 	}
 
-    public Pedido(Mesa table, Garcom garcom){
-        this.table=table;
+    public Pedido(Mesa mesa, Garcom garcom){
+        this.mesa=mesa;
         this.garcom=garcom;
     }
 
@@ -35,12 +48,12 @@ public class Pedido {
         this.garcom = garcom;
     }
 
-    public void setTable(Mesa table){
-        this.table=table;
+    public void setMesa(Mesa mesa){
+        this.mesa=mesa;
     }
 
-    public Mesa getTable(){
-        return this.table;
+    public Mesa getMesa(){
+        return this.mesa;
     }
 
     public Garcom getGarcom(){
@@ -63,6 +76,7 @@ public class Pedido {
         return this.totalConta;
     }
 
+    
 
 
 

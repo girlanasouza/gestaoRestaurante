@@ -7,9 +7,25 @@ public class MainInterface extends javax.swing.JFrame {
 
     private Cardapio cardapio;
     private BancoGarcom bancoGarcom;
+    private BancoMesas bancoMesas;
 
-    public MainInterface(Cardapio cardapio,BancoGarcom bancoGarcom ) {
+    public BancoGarcom getBancoGarcom(){
+        return this.bancoGarcom;
+    }
+
+    public Cardapio getCardapio(){
+        return this.cardapio;
+    }
+
+    public BancoMesas getBancoMesas(){
+        return this.bancoMesas;
+    }
+    public MainInterface(Cardapio cardapio,BancoGarcom bancoGarcom, BancoMesas bancoMesas) {
         super("TELA PRINCIPAL");
+
+        this.bancoGarcom=bancoGarcom;
+        this.cardapio=cardapio;
+        this.bancoMesas=bancoMesas;
         setLayout(null);
         // setSize(500, 300);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -36,16 +52,17 @@ public class MainInterface extends javax.swing.JFrame {
         cadastrarCardapioButton.setBounds(20, 90, 220, 25);
         add(cadastrarCardapioButton);
 
-        JButton cadastrarGarcomButton= new JButton("Cadastrar Garçom");
-        cadastrarGarcomButton.setBounds(20, 125, 220, 25);
-        add(cadastrarGarcomButton);
+        JButton gerirGarcomButton= new JButton("Gerenciar Garçons");
+        gerirGarcomButton.setBounds(20, 125, 220, 25);
+        add(gerirGarcomButton);
         
 
 
         menuButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 if (cardapio != null) {
-                    CardapioInterface menuInterface = new CardapioInterface(cardapio);
+                    CardapioInterface menuInterface = new CardapioInterface(MainInterface.this.getCardapio(),MainInterface.this.getBancoMesas(), 
+                    MainInterface.this.getBancoGarcom());
                     menuInterface.setVisible(true);
                 } else {
                     JOptionPane.showMessageDialog(null, "Cardápio não definido.");
@@ -60,10 +77,10 @@ public class MainInterface extends javax.swing.JFrame {
             }
         });
 
-        cadastrarGarcomButton.addActionListener(new ActionListener() {
+        gerirGarcomButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event){
-                CadastrarGarcomInterface cadastrarGarcom = new CadastrarGarcomInterface(bancoGarcom);
-                cadastrarGarcom.setVisible(true);
+                GerirGarcomInterface gerirGarcomInterface = new GerirGarcomInterface(bancoGarcom);
+                gerirGarcomInterface.setVisible(true);
             }
         });
 

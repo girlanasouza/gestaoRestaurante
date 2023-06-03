@@ -12,6 +12,16 @@ public class BancoGarcom {
         return false;
     }
 
+
+    public boolean removeWaiter(int id) {
+	    for (Garcom g : gargons) {
+	        if (g.getId()==id) {
+	            gargons.remove(g);  
+	            return true;
+	        }
+	    }
+	    return false;  
+	}
     public String getDrescribe(){
         String retorno = "";
         for(Garcom garcom:this.gargons){
