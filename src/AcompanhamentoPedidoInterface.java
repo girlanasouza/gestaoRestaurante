@@ -1,24 +1,29 @@
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
+import javax.swing.table.*;
+import java.util.*;
 
 public class AcompanhamentoPedidoInterface extends JFrame {
     private Pedido pedido;
     private BancoPedidos bancoPedidos;
+    private JTable tabelaPedidos;
+    private DefaultTableModel tableModel;
 
     public void setPedido(Pedido pedido){
         bancoPedidos = new BancoPedidos();
-
         this.bancoPedidos.inserirPedido(pedido);
+        // Atualiza a tabela após inserir o pedido
+        atualizarTabelaPedidos();
     }
 
     public Pedido getPedido(){
         return this.pedido;
     }
 
-    public AcompanhamentoPedidoInterface(Pedido pedido){
+    public AcompanhamentoPedidoInterface(BancoPedidos bancoPedidos){
         super("Confirmar Pedido");
-        this.pedido=pedido;
+        this.bancoPedidos=bancoPedidos;
 
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
@@ -42,23 +47,26 @@ public class AcompanhamentoPedidoInterface extends JFrame {
 
         JPanel panelBody = new JPanel();
         panelBody.setBackground(Color.GREEN);
-        panelBody.setMinimumSize(new Dimension(500, 600));
-        panelBody.setLayout(new FlowLayout(FlowLayout.CENTER));
-
-        JLabel pedidosJLabel = new JLabel("");
-
+        panelBody.setLayout(new BorderLayout());
 
         JPanel panelRodape = new JPanel();
         panelRodape.setBackground(Color.PINK);
         panelRodape.setLayout(new FlowLayout(FlowLayout.RIGHT));
 
+        tableModel = new DefaultTableModel();
+        tableModel.addColumn("Número");
+        tableModel.addColumn("Mesa");
+        tableModel.addColumn("Situação");
+
+        tabelaPedidos = new JTable(tableModel);
+        JScrollPane scrollPane = new JScrollPane(tabelaPedidos);
+        panelBody.add(scrollPane, BorderLayout.CENTER);
+
         JLabel labelEsquerda = new JLabel("Área Esquerda");
         labelEsquerda.setHorizontalAlignment(SwingConstants.CENTER);
         panelRodape.add(labelEsquerda, BorderLayout.CENTER);
-        
 
         JButton voltaMenuButton = new JButton("Voltar");
-        voltaMenuButton.setBounds(20, 175, 220, 25);
         voltaMenuButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 AcompanhamentoPedidoInterface.this.setVisible(false);
@@ -69,15 +77,23 @@ public class AcompanhamentoPedidoInterface extends JFrame {
         panelPrincipal.add(panelBody);
         panelPrincipal.add(panelRodape);
         panelRodape.add(voltaMenuButton);
-        
 
         getContentPane().setLayout(new BorderLayout());
-        // getContentPane().add(panelBody, BorderLayout.NORTH);
-        getContentPane().add(panelRodape, BorderLayout.SOUTH);
-
-        this.add(panelPrincipal);
+        getContentPane().add(panelPrincipal, BorderLayout.CENTER);
 
         setVisible(true);
     }
+    
+    private void atualizarTabelaPedidos() {
+        // Limpa os dados da tabela
+        tableModel.setRowCount(0);
 
+        // Obtém os pedidos do banco de pedidos
+        ArrayList<Pedido> pedidos = bancoPedidos.getPedidos();
+
+        // Adiciona os pedidos à tabela
+        for (Pedido pedido : pedidos) {
+            tableModel.addRow(new Object[]{pedido.getMesa(), pedido.getDescribe(), pedido.getSituacao()});
+        }
+    }
 }

@@ -4,9 +4,9 @@ public class BancoPedidos extends ConnectionBase{
     private  ArrayList<Pedido> pedidos;
 
     public BancoPedidos(){
-        
+        this.pedidos = new ArrayList<Pedido>();
     }
-    public boolean  inserirPedido(Pedido pedido){
+    public boolean inserirPedido(Pedido pedido){
         if(!this.pedidos.contains(pedido)){
             this.pedidos.add(pedido);
             return true;

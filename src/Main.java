@@ -23,24 +23,33 @@ public class Main {
         cardapio1.addItem(item1);
         cardapio1.addItem(item3);
 
-//        Pedido pedido1 = new Pedido(mesa1, waiter2);
+        Garcom garcom = new Garcom("ANA", 0, "jaru");
+
+       Pedido pedido1 = new Pedido(mesa1, garcom);
 //        pedido1.addItem(item1);
 //        pedido1.addItem(item2);
 
 //        FechamentoConta fechamentoConta = new FechamentoConta(pedido1, 100.2);
 
-        System.out.println(bancoMesas.getDescribe());
+        // System.out.println(bancoMesas.getDescribe());
 
 
+        BancoPedidos bancoPedidos = new BancoPedidos();
+        bancoPedidos.inserirPedido(pedido1);
+
+        // System.out.println(pedido1.getDescribe());
+        // System.out.println(bancoPedidos.toString());
 
         BancoGarcom bancoGarcom = new BancoGarcom();
         bancoGarcom = bancoGarcom.selectAll();
 
-        MainInterface f1 = new MainInterface(cardapio1, bancoGarcom,bancoMesas);
+        MainInterface f1 = new MainInterface(cardapio1, bancoGarcom,bancoMesas, bancoPedidos);
+        System.out.println(bancoPedidos.toString());
+
         // f1.setCardapio(cardapio1); // Pass the Cardapio object to MainInterface
         f1.setVisible(true);
 
-        System.out.println(bancoGarcom.getDrescribe());
+        // System.out.println(bancoPedidos.toString());
 
        
     //    System.out.println(cardapio1.describeMenu());

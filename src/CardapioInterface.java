@@ -8,34 +8,15 @@ public class CardapioInterface extends JFrame {
     private ArrayList <Item> itens;
     private BancoMesas bancoMesas;
     private BancoGarcom  bancoGarcom;
+    private BancoPedidos bancoPedidos;
     
-
-    public ArrayList<Item> getItens(){
-        return this.itens;
-    }
-
-    public void setItens(ArrayList<Item> itens){
-        this.itens=itens;
-    }
-
-    public Cardapio getCardapio(){
-        return this.cardapio;
-    }
-
-    public BancoMesas getBancoMesas(){
-        return this.bancoMesas;
-    }
-
-    public BancoGarcom getBancoGarcom(){
-        return this.bancoGarcom;
-    }
-
-    public CardapioInterface(Cardapio cardapio, BancoMesas bancoMesas, BancoGarcom bancoGarcons) {
+    public CardapioInterface(Cardapio cardapio, BancoMesas bancoMesas, BancoGarcom bancoGarcons, BancoPedidos bancoPedidos) {
         super("Cardápio");
         itens = new ArrayList<Item>();
         this.cardapio = cardapio;
         this.bancoMesas=bancoMesas;
         this.bancoGarcom = bancoGarcons;
+        this.bancoPedidos=bancoPedidos;
 
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
@@ -125,7 +106,7 @@ public class CardapioInterface extends JFrame {
                 }
                 else{
                     ConfirmarPedidoInterface confirmarPedidoInterface =  new ConfirmarPedidoInterface(CardapioInterface.this.getItens(), CardapioInterface.this.getBancoMesas(),
-                    CardapioInterface.this.getBancoGarcom());
+                    CardapioInterface.this.getBancoGarcom(), CardapioInterface.this.getBancoPedidos());
                     confirmarPedidoInterface.setVisible(true);
                
                 }
@@ -156,5 +137,27 @@ public class CardapioInterface extends JFrame {
 
         setLocationRelativeTo(null);
         setVisible(true);
+    }
+    public ArrayList<Item> getItens(){
+        return this.itens;
+    }
+
+    public void setItens(ArrayList<Item> itens){
+        this.itens=itens;
+    }
+
+    public Cardapio getCardapio(){
+        return this.cardapio;
+    }
+
+    public BancoMesas getBancoMesas(){
+        return this.bancoMesas;
+    }
+
+    public BancoGarcom getBancoGarcom(){
+        return this.bancoGarcom;
+    }
+    public BancoPedidos getBancoPedidos(){
+        return this.bancoPedidos;
     }
 }

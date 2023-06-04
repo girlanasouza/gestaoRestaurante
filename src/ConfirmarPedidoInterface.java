@@ -7,11 +7,20 @@ public class ConfirmarPedidoInterface extends JFrame {
     private ArrayList<Item> itens;
     private BancoMesas bancoMesas;
     private BancoGarcom bancoGarcom;
-    
-
+    private BancoPedidos bancoPedidos;
     private Mesa mesa;
     private Garcom garcom;
 
+    public void setBancoPedidos(BancoPedidos bancoPedidos){
+        this.bancoPedidos=bancoPedidos;
+    }
+    public BancoPedidos getBancoPedidos(){
+        return this.bancoPedidos;
+    }
+
+    public void setPedidoBanco(Pedido pedido){
+        this.bancoPedidos.inserirPedido(pedido);
+    }
     public void setMesa(Mesa mesa){
         this.mesa=mesa;
     }
@@ -41,11 +50,13 @@ public class ConfirmarPedidoInterface extends JFrame {
     }
 
 
-    public ConfirmarPedidoInterface(ArrayList<Item> itens, BancoMesas bancoMesas, BancoGarcom bancoGarcom){
+    public ConfirmarPedidoInterface(ArrayList<Item> itens, BancoMesas bancoMesas, BancoGarcom bancoGarcom, 
+    BancoPedidos bancoPedidos){
         super("Acompanhamento de Pedido");
         this.itens = itens;
         this.bancoMesas=bancoMesas;
         this.bancoGarcom=bancoGarcom;
+        this.bancoPedidos=bancoPedidos;
 
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
@@ -129,12 +140,24 @@ public class ConfirmarPedidoInterface extends JFrame {
                     JOptionPane.showMessageDialog(null, "Selecione as opções desejadas!");
                 }
                 else{
-                    Pedido pedido = new Pedido(ConfirmarPedidoInterface.this.getItens(), ConfirmarPedidoInterface.this.getMesa(), ConfirmarPedidoInterface.this.getGarcom(), "Feito");
+                    Pedido pedidoFeito = new Pedido(ConfirmarPedidoInterface.this.getItens(), ConfirmarPedidoInterface.this.getMesa(), ConfirmarPedidoInterface.this.getGarcom(), "Feito");
+//                    ConfirmarPedidoInterface.this.setPedidoBanco(pedido);
+//                    ConfirmarPedidoInterface.this.bancoPedidos.inserirPedido(pedidoFeito);
                     JOptionPane.showMessageDialog(null, "Pedido Realizado com Sucesso!");
-                    AcompanhamentoPedidoInterface acompanhamentoPedidoInterface = new AcompanhamentoPedidoInterface(pedido);
+                    ConfirmarPedidoInterface.this.setVisible(false);
                     
                 }
                 
+            }
+        });
+        
+        confirmarPedidButton.addMouseListener(new MouseAdapter(){
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e);
+                for(Pedido p: ConfirmarPedidoInterface.this.bancoPedidos.getPedidos()){
+                    System.out.println(p.getDescribe());
+                }
             }
         });
 

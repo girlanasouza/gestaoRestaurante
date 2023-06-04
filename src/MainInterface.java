@@ -8,6 +8,15 @@ public class MainInterface extends javax.swing.JFrame {
     private Cardapio cardapio;
     private BancoGarcom bancoGarcom;
     private BancoMesas bancoMesas;
+    private BancoPedidos bancoPedidos;
+
+    public BancoPedidos getBancoPedidos(){
+        return this.bancoPedidos;
+    }
+
+    public void setBancoPedidos(BancoPedidos bancoPedidos){
+        this.bancoPedidos=bancoPedidos;
+    }
 
     public BancoGarcom getBancoGarcom(){
         return this.bancoGarcom;
@@ -20,12 +29,13 @@ public class MainInterface extends javax.swing.JFrame {
     public BancoMesas getBancoMesas(){
         return this.bancoMesas;
     }
-    public MainInterface(Cardapio cardapio,BancoGarcom bancoGarcom, BancoMesas bancoMesas) {
+    public MainInterface(Cardapio cardapio,BancoGarcom bancoGarcom, BancoMesas bancoMesas, BancoPedidos bancoPedidos) {
         super("TELA PRINCIPAL");
 
         this.bancoGarcom=bancoGarcom;
         this.cardapio=cardapio;
         this.bancoMesas=bancoMesas;
+        this.bancoPedidos=bancoPedidos;
         setLayout(null);
         // setSize(500, 300);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -42,19 +52,19 @@ public class MainInterface extends javax.swing.JFrame {
         JLabel title = new JLabel("Tela Principal");
         title.setBounds(0, 10, 500, 30);
         title.setHorizontalAlignment(SwingConstants.CENTER);
-        add(title);
+        this.add(title);
 
         JButton menuButton = new JButton("Menu");
         menuButton.setBounds(20, 55, 220, 25);
-        add(menuButton);
+        this.add(menuButton);
 
         JButton cadastrarCardapioButton = new JButton("Cadastrar Cardapio");
         cadastrarCardapioButton.setBounds(20, 90, 220, 25);
-        add(cadastrarCardapioButton);
+        this.add(cadastrarCardapioButton);
 
         JButton gerirGarcomButton= new JButton("Gerenciar Garçons");
         gerirGarcomButton.setBounds(20, 125, 220, 25);
-        add(gerirGarcomButton);
+        this.add(gerirGarcomButton);
         
 
 
@@ -62,7 +72,7 @@ public class MainInterface extends javax.swing.JFrame {
             public void actionPerformed(ActionEvent e) {
                 if (cardapio != null) {
                     CardapioInterface menuInterface = new CardapioInterface(MainInterface.this.getCardapio(),MainInterface.this.getBancoMesas(), 
-                    MainInterface.this.getBancoGarcom());
+                    MainInterface.this.getBancoGarcom(), MainInterface.this.getBancoPedidos());
                     menuInterface.setVisible(true);
                 } else {
                     JOptionPane.showMessageDialog(null, "Cardápio não definido.");
@@ -83,6 +93,19 @@ public class MainInterface extends javax.swing.JFrame {
                 gerirGarcomInterface.setVisible(true);
             }
         });
+
+
+        JButton acompanharPedidos = new JButton("Acompanhar Pedidos");
+        acompanharPedidos.setBounds(20, 155, 220, 25);
+        this.add(acompanharPedidos);
+
+        acompanharPedidos.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent event){
+                AcompanhamentoPedidoInterface acompanhamentoPedidoInterface = new AcompanhamentoPedidoInterface(getBancoPedidos());
+                acompanhamentoPedidoInterface.setVisible(true);
+            }
+        });
+
 
 
 
