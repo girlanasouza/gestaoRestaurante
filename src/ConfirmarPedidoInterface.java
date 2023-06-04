@@ -130,8 +130,9 @@ public class ConfirmarPedidoInterface extends JFrame {
                 }
                 else{
                     Pedido pedido = new Pedido(ConfirmarPedidoInterface.this.getItens(), ConfirmarPedidoInterface.this.getMesa(), ConfirmarPedidoInterface.this.getGarcom(), "Feito");
-                    AcompanhamentoPedidoInterface acompanhamentoPedidoInterface = new AcompanhamentoPedidoInterface(pedido);
                     JOptionPane.showMessageDialog(null, "Pedido Realizado com Sucesso!");
+                    AcompanhamentoPedidoInterface acompanhamentoPedidoInterface = new AcompanhamentoPedidoInterface(pedido);
+                    
                 }
                 
             }

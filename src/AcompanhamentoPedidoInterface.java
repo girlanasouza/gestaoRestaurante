@@ -6,7 +6,6 @@ public class AcompanhamentoPedidoInterface extends JFrame {
     private Pedido pedido;
     private BancoPedidos bancoPedidos;
 
-
     public void setPedido(Pedido pedido){
         bancoPedidos = new BancoPedidos();
 
