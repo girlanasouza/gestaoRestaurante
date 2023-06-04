@@ -18,9 +18,14 @@ public class ConfirmarPedidoInterface extends JFrame {
         return this.bancoPedidos;
     }
 
-    public void setPedidoBanco(Pedido pedido){
-        this.bancoPedidos.inserirPedido(pedido);
+    public void setPedidoBanco(Pedido pedido) {
+        if (this.bancoPedidos != null) {
+            this.bancoPedidos.inserirPedido(pedido);
+        } else {
+            JOptionPane.showMessageDialog(null, "Banco de Pedidos não inicializado!");
+        }
     }
+
     public void setMesa(Mesa mesa){
         this.mesa=mesa;
     }
@@ -61,6 +66,7 @@ public class ConfirmarPedidoInterface extends JFrame {
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
         Dimension maxSize = new Dimension(500, 800);
+        Color color = new Color(255,235,205);
 
         setSize(maxSize);
 
@@ -69,22 +75,22 @@ public class ConfirmarPedidoInterface extends JFrame {
         setResizable(true);
 
         setLocationRelativeTo(null);
-
+        
         JPanel panelPrincipal = new JPanel();
-        panelPrincipal.setBackground(Color.ORANGE);
+        panelPrincipal.setBackground(color);
         panelPrincipal.setLayout(new BoxLayout(panelPrincipal, BoxLayout.Y_AXIS));
 
         JPanel panelHead = new JPanel();
-        panelHead.setBackground(Color.ORANGE);
+        panelHead.setBackground(color);
         panelHead.setLayout(new FlowLayout(FlowLayout.CENTER));
 
         JPanel panelBody = new JPanel();
-        panelBody.setBackground(Color.GREEN);
+        panelBody.setBackground(color);
         panelBody.setMinimumSize(new Dimension(500, 600));
         panelBody.setLayout(new FlowLayout(FlowLayout.CENTER));
 
         JPanel panelRodape = new JPanel();
-        panelRodape.setBackground(Color.PINK);
+        panelRodape.setBackground(color);
         panelRodape.setLayout(new FlowLayout(FlowLayout.RIGHT));
 
         JLabel labelEsquerda = new JLabel("Área Esquerda");
@@ -97,7 +103,9 @@ public class ConfirmarPedidoInterface extends JFrame {
         for(Mesa mesa:getBancoMesas().getMesa()){
             if(mesa.verifyAvaliableTable()){
                 JRadioButton radioButton = new JRadioButton(mesa.toString());
+                radioButton.setBackground(color);
                 checkBoxGroupMesa.add(radioButton);
+                
                 panelHead.add(radioButton);  
 
                 radioButton.addItemListener(new ItemListener() {
@@ -112,6 +120,7 @@ public class ConfirmarPedidoInterface extends JFrame {
 
         for(Garcom garcom:getBancoGarcom().getGacons()){
             JRadioButton radioGarcomButton = new JRadioButton(garcom.toString());
+            radioGarcomButton.setBackground(color);
             checkBoxGroupGarcom.add(radioGarcomButton);
             panelBody.add(radioGarcomButton);
             radioGarcomButton.addItemListener(new ItemListener() {
@@ -136,30 +145,39 @@ public class ConfirmarPedidoInterface extends JFrame {
         confirmarPedidButton.setBounds(20, 205, 220, 25);
         confirmarPedidButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                if((ConfirmarPedidoInterface.this.getMesa()==null)||(ConfirmarPedidoInterface.this.getGarcom()==null)){
+                if ((ConfirmarPedidoInterface.this.getMesa() == null) || (ConfirmarPedidoInterface.this.getGarcom() == null)) {
                     JOptionPane.showMessageDialog(null, "Selecione as opções desejadas!");
-                }
-                else{
+                } else {
                     Pedido pedidoFeito = new Pedido(ConfirmarPedidoInterface.this.getItens(), ConfirmarPedidoInterface.this.getMesa(), ConfirmarPedidoInterface.this.getGarcom(), "Feito");
-//                    ConfirmarPedidoInterface.this.setPedidoBanco(pedido);
-//                    ConfirmarPedidoInterface.this.bancoPedidos.inserirPedido(pedidoFeito);
+                    ConfirmarPedidoInterface.this.setPedidoBanco(pedidoFeito);  
                     JOptionPane.showMessageDialog(null, "Pedido Realizado com Sucesso!");
                     ConfirmarPedidoInterface.this.setVisible(false);
-                    
                 }
-                
             }
         });
-        
-        confirmarPedidButton.addMouseListener(new MouseAdapter(){
+
+        confirmarPedidButton.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
                 super.mouseClicked(e);
-                for(Pedido p: ConfirmarPedidoInterface.this.bancoPedidos.getPedidos()){
-                    System.out.println(p.getDescribe());
+                if (ConfirmarPedidoInterface.this.bancoPedidos != null) {
+                    System.out.println(ConfirmarPedidoInterface.this.bancoPedidos.toString());
+                } else {
+                    System.out.println("Banco de Pedidos não inicializado!");
                 }
             }
         });
+        confirmarPedidButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                if (ConfirmarPedidoInterface.this.bancoPedidos != null) {
+                    System.out.println(ConfirmarPedidoInterface.this.bancoPedidos.toString());
+                } else {
+                    System.out.println("Banco de Pedidos não inicializado!");
+                }
+            }
+        });
+
+
 
 
 

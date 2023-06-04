@@ -1,57 +1,61 @@
-
 public class Mesa {
-	private int numberTable;
-	private boolean avaliableTable; // se mesa disponivel retorna true senão false
+    private int id;
+    private int numberTable;
+    private String avaliableTable; // Se a mesa está disponível ("true") ou não disponível ("false")
 
-	public Mesa(int numberTable, boolean avaliableTable){
-		this.numberTable = numberTable;
-		this.avaliableTable=avaliableTable;
-	}
-	
-	public boolean verifyAvaliableTable() {
-		if(this.avaliableTable!=true) {
-			return false;
-		}
-
-		return true;
-		
-	}
-
-	public void mesaDisponivel(){
-        setAvaliableTable(true);
+    public Mesa() {
+        this.id = 0;
+        this.numberTable = 0;
+        this.avaliableTable = "false";
     }
 
-	public void setNumberTable(int numberTable){
-		this.numberTable=numberTable;
-	}
+    public Mesa(int id, int numberTable, String avaliableTable) {
+        this.id = id;
+        this.numberTable = numberTable;
+        this.avaliableTable = avaliableTable;
+    }
 
-	public void setAvaliableTable(boolean avaliableTable){
-		this.avaliableTable=avaliableTable;
-	}
+    public boolean verifyAvaliableTable() {
+        return avaliableTable.equalsIgnoreCase("true");
+    }
 
-	public int getNumberTable(){
-		return this.numberTable;
-	}
+    public void setId(int id) {
+        this.id = id;
+    }
 
-	public boolean getAvaliableTable(){
-		return this.avaliableTable;
-	}
+    public int getId() {
+        return this.id;
+    }
 
-	public String verify(){
-		if(getAvaliableTable()==true){
-			return ", mesa disponível";
-		}
-		return ", mesa não disponível";
+    public void mesaDisponivel() {
+        setAvaliableTable("true");
+    }
 
-	}
+    public void setNumberTable(int numberTable) {
+        this.numberTable = numberTable;
+    }
 
-	public String toString(){
-		String retorno = "Número de mesa: "+getNumberTable()+"\n"+verify()+"\n";
+    public void setAvaliableTable(String avaliableTable) {
+        this.avaliableTable = avaliableTable;
+    }
 
-		return retorno;
+    public int getNumberTable() {
+        return this.numberTable;
+    }
 
-	}
-	
-	
+    public String getAvaliableTable() {
+        return this.avaliableTable;
+    }
 
+    public String verify() {
+        if (getAvaliableTable().equalsIgnoreCase("true")) {
+            return ", mesa disponível";
+        }
+        return ", mesa não disponível";
+    }
+
+    public String toString() {
+        String retorno = "Número de mesa: " + getNumberTable() + "\n" + verify() + "\n";
+        return retorno;
+    }
 }

@@ -1,6 +1,9 @@
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+
 import javax.swing.*;
 
 public class MainInterface extends javax.swing.JFrame {
@@ -105,6 +108,21 @@ public class MainInterface extends javax.swing.JFrame {
                 acompanhamentoPedidoInterface.setVisible(true);
             }
         });
+
+        JButton mesaButton = new JButton("Gerenciar Mesas");
+        mesaButton.setBounds(20, 185, 220, 25);
+        this.add(mesaButton);
+
+        mesaButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent event){
+                GerirMesaInterface gerirMesaInterface = new GerirMesaInterface(getBancoMesas());
+                if(getBancoMesas()!=null){
+                    System.out.println("Banco de mesas não está  vazio!");
+                }
+                gerirMesaInterface.setVisible(true);
+            }
+        });
+
 
 
 

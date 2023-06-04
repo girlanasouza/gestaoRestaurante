@@ -1,5 +1,5 @@
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
+// import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
@@ -18,11 +18,7 @@ public class Cardapio extends ConnectionBase {
 				preparedStatement.setDouble(3, item.getValue());
                 int status = preparedStatement.executeUpdate();
                 
-                ResultSet generatedKeys = preparedStatement.getGeneratedKeys();
-                	if (generatedKeys.next()) {
-                    int insertedIndex = generatedKeys.getInt(1);
-                    item.setId(insertedIndex);
-                }
+                
                 preparedStatement.close();
 
                 return status!=0;

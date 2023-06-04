@@ -1,6 +1,9 @@
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
-public class Pedido {
+public class Pedido extends ConnectionBase {
     private ArrayList<Item> itens = new ArrayList<>();
     private double totalConta=0;
     private Mesa mesa;
@@ -59,6 +62,26 @@ public class Pedido {
 
 		if(!itens.contains(item)) {
 			itens.add(item);
+
+            String sql = "insert into item (nome, descricao, valor) values (?, ?, ?)";
+            try {
+                PreparedStatement preparedStatement = conexao.prepareStatement(sql);
+                preparedStatement.setString(1, item.getName());
+                preparedStatement.setString(2, item.getDescribe());
+                preparedStatement.setDouble(3, item.getValue());
+                int status = preparedStatement.executeUpdate();
+                
+                ResultSet generatedKeys = preparedStatement.getGeneratedKeys();
+                	if (generatedKeys.next()) {
+                    int insertedIndex = generatedKeys.getInt(1);
+                    garcom.setId(insertedIndex);
+                }
+                preparedStatement.close();
+
+                return status!=0;
+            } catch (SQLException e) {
+                System.out.println(e);
+            }
 			return true;
 		}
 		return false;

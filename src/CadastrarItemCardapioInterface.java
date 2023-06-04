@@ -1,14 +1,7 @@
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import javax.swing.BoxLayout;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JTextField;
-import javax.swing.JOptionPane;
+import java.awt.*;
+import java.awt.event.*;
+import javax.swing.*;
+
 
 public class CadastrarItemCardapioInterface extends JFrame {
     private Cardapio cardapio;
@@ -64,7 +57,7 @@ public class CadastrarItemCardapioInterface extends JFrame {
                 } else {
                     double valor = Double.parseDouble(valorText);
                     //arrumar id
-                    Item item = new Item(0,nome, descricao, valor);
+                    Item item = new Item(nome, descricao, valor);
                     cardapio.addItem(item);
                     itemField.setText("");
                     descricaoItemField.setText("");
