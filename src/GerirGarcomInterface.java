@@ -66,6 +66,14 @@ public class GerirGarcomInterface extends JFrame {
         JButton alterarButton = new JButton("Alterar Garçom");
         alterarButton.setBounds(20, 85, 220, 25);
 
+        alterarButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                AlterarGarcomInterface alterarGarcomInterface = new AlterarGarcomInterface();
+                alterarGarcomInterface.setVisible(true);
+            }
+        });
+
+     
         JButton relatorioButton = new JButton("Relatórios de Garçom");
         relatorioButton.setBounds(20, 145, 220, 25);
 
@@ -73,6 +81,7 @@ public class GerirGarcomInterface extends JFrame {
         voltaMenuButton.setBounds(20, 175, 220, 25);
         voltaMenuButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
+                
                 GerirGarcomInterface.this.setVisible(false);
             }
         });

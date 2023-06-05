@@ -50,7 +50,13 @@ public class Garcom {
 
 		return false;
 	}
-
+	
+	public void editarGarcom(String newName, int newId, String newAddress) {
+	    setName(newName);
+	    setId(newId);
+	    setAddress(newAddress);
+	}
+	
 	public String toString(){
 		String describe = "Nome do Garçon: "+getName()+"\n"+" Id Garçon: "+getId()+"\n";
 		return describe;

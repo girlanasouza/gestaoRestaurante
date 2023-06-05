@@ -89,6 +89,17 @@ public class BancoGarcom extends ConnectionBase{
 	    }
 	    return false;  
 	}
+
+    public Garcom buscarGarcom(int id){
+        for(Garcom garcom:getGacons()){
+            if(garcom.getId()==id){
+                return garcom;
+            }
+            
+        }
+        return null;
+    }
+    
     public String getDrescribe(){
         String retorno = "";
         for(Garcom garcom:this.gargons){

@@ -1,16 +1,6 @@
-import java.awt.Color;
-import javax.swing.JScrollPane;
-import java.awt.Dimension;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import javax.swing.BoxLayout;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.JTextField;
-import javax.swing.SwingConstants;
+import java.awt.*;
+import java.awt.event.*;
+import javax.swing.*;
 
 public class CadastrarGarcomInterface  extends JFrame{
     private BancoGarcom bancoGarcom;
@@ -39,7 +29,6 @@ public class CadastrarGarcomInterface  extends JFrame{
         principal.setSize(maxSize);
         principal.setLayout(new BoxLayout(principal, BoxLayout.Y_AXIS));
         
-        JScrollPane scrollPane = new JScrollPane(principal);
         
         setLocationRelativeTo(null);
 

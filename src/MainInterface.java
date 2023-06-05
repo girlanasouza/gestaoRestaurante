@@ -121,8 +121,6 @@ public class MainInterface extends javax.swing.JFrame {
 
 
 
-
-
         setVisible(true);
         setLocationRelativeTo(null);
         // setVisible(true);
