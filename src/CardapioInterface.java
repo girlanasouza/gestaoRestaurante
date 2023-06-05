@@ -11,7 +11,7 @@ public class CardapioInterface extends JFrame {
     private BancoPedidos bancoPedidos;
     
     public CardapioInterface(Cardapio cardapio, BancoMesas bancoMesas, BancoGarcom bancoGarcons, BancoPedidos bancoPedidos) {
-        super("Cardápio");
+        super("Realizar Pedido");
         itens = new ArrayList<Item>();
         this.cardapio = cardapio;
         this.bancoMesas=bancoMesas;
@@ -27,7 +27,8 @@ public class CardapioInterface extends JFrame {
         setPreferredSize(maxSize);
 
         setResizable(true);
-
+        
+        Color cor = new Color (255,192,203);
 
         JPanel principal = new JPanel();
         principal.setSize(500, 500);
@@ -37,12 +38,12 @@ public class CardapioInterface extends JFrame {
         title.setBorder(BorderFactory.createEmptyBorder(50,0,0,0));
 
         JPanel painelCardapio = new JPanel();
-        painelCardapio.setBackground(Color.YELLOW);
+        painelCardapio.setBackground(Color.BLUE);
         painelCardapio.add(title, BorderLayout.CENTER);
         painelCardapio.add(title);
 
         JPanel panelEsquerda = new JPanel();
-        panelEsquerda.setBackground(Color.PINK);
+        panelEsquerda.setBackground(cor);
         panelEsquerda.setLayout(new FlowLayout(FlowLayout.RIGHT));
 
         JLabel labelEsquerda = new JLabel("Área Esquerda");
@@ -51,7 +52,7 @@ public class CardapioInterface extends JFrame {
         
 
         JPanel panelDireita = new JPanel();
-        panelDireita.setBackground(Color.BLUE);
+        panelDireita.setBackground(cor);
         panelDireita.setLayout(new BorderLayout());
 
         JLabel labelDireita = new JLabel("Área Direita");
@@ -60,7 +61,7 @@ public class CardapioInterface extends JFrame {
         
 
         JPanel panelMeio = new JPanel();
-        panelMeio.setBackground(Color.GREEN);
+        panelMeio.setBackground(cor);
         panelMeio.setLayout(new BoxLayout(panelMeio, BoxLayout.Y_AXIS));
 
         if (cardapio != null) {
@@ -126,14 +127,12 @@ public class CardapioInterface extends JFrame {
         
         principal.add(painelCardapio);
         principal.add(panelMeio);
-        principal.add(panelDireita);
-        principal.add(panelEsquerda);
-
-        
         panelEsquerda.add(voltaMenuButton);
         panelEsquerda.add(realizarPedidoButton);
-        add(principal);
-        // add(panelEsquerda);
+        getContentPane().setLayout(new BorderLayout());
+        getContentPane().add(painelCardapio, BorderLayout.NORTH);
+        getContentPane().add(principal, BorderLayout.CENTER);
+        getContentPane().add(panelEsquerda, BorderLayout.SOUTH);
 
         setLocationRelativeTo(null);
         setVisible(true);

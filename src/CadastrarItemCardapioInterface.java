@@ -15,36 +15,47 @@ public class CadastrarItemCardapioInterface extends JFrame {
         this.cardapio = cardapio;
 
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-
         Dimension maxSize = new Dimension(500, 800);
-
         setSize(maxSize);
         setPreferredSize(maxSize);
         setResizable(true);
 
-        JPanel principal = new JPanel();
-        principal.setSize(500, 800);
-        principal.setLayout(new BoxLayout(principal, BoxLayout.Y_AXIS));
+        JPanel topoPanel = new JPanel();
+        topoPanel.setBackground(Color.BLUE);
 
+        JLabel topoLabel = new JLabel("Tela de Cadastro de item");
+        topoLabel.setBorder(BorderFactory.createEmptyBorder(50,0,0,0));
+
+        JPanel corpoPanel = new JPanel();
+        corpoPanel.setSize(500, 500);
+        corpoPanel.setLayout(new BoxLayout(corpoPanel, BoxLayout.Y_AXIS));
+        
+        JPanel rodapePanel = new JPanel();
+        rodapePanel.setBackground(Color.RED);
+        rodapePanel.setLayout(new FlowLayout(FlowLayout.RIGHT));
+        
         JLabel nomeItem = new JLabel("Nome do Item");
         JTextField itemField = new JTextField();
         itemField.setBackground(Color.PINK);
+        itemField.setHorizontalAlignment(SwingConstants.CENTER);
         itemField.setEditable(true);
 
         JLabel descricaoItem = new JLabel("Descrição do Item");
 
         JTextField descricaoItemField = new JTextField();
         descricaoItemField.setBackground(Color.YELLOW);
+        descricaoItemField.setHorizontalAlignment(SwingConstants.CENTER);
         descricaoItemField.setEditable(true);
+
 
         JLabel valueItem = new JLabel("Valor do Item");
 
         JTextField valueItemField = new JTextField();
         valueItemField.setBackground(Color.GREEN);
+        valueItemField.setHorizontalAlignment(SwingConstants.CENTER);
         valueItemField.setEditable(true);
 
         JButton cadastrarItemButton = new JButton("Cadastrar item");
-        cadastrarItemButton.setBackground(Color.RED);
 
         cadastrarItemButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -84,18 +95,22 @@ public class CadastrarItemCardapioInterface extends JFrame {
                
             }
         });
+        topoPanel.add(topoLabel);
+        corpoPanel.add(nomeItem);
+        corpoPanel.add(itemField);
+        corpoPanel.add(descricaoItem);
+        corpoPanel.add(descricaoItemField);
+        corpoPanel.add(valueItem);
+        corpoPanel.add(valueItemField);
+        rodapePanel.add(cadastrarItemButton);
+        rodapePanel.add(imprimirCardapioButton);
+        rodapePanel.add(voltaMenuButton);
 
-        principal.add(nomeItem);
-        principal.add(itemField);
-        principal.add(descricaoItem);
-        principal.add(descricaoItemField);
-        principal.add(valueItem);
-        principal.add(valueItemField);
-        principal.add(cadastrarItemButton);
-        principal.add(imprimirCardapioButton);
-        principal.add(voltaMenuButton);
+        getContentPane().setLayout(new BorderLayout());
+        getContentPane().add(topoPanel, BorderLayout.NORTH);
+        getContentPane().add(corpoPanel, BorderLayout.CENTER);
+        getContentPane().add(rodapePanel, BorderLayout.SOUTH);
 
-        add(principal);
 
         setLocationRelativeTo(null);
         setVisible(true);

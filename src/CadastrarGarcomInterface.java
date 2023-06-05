@@ -1,4 +1,5 @@
 import java.awt.Color;
+import javax.swing.JScrollPane;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -9,6 +10,7 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import javax.swing.SwingConstants;
 
 public class CadastrarGarcomInterface  extends JFrame{
     private BancoGarcom bancoGarcom;
@@ -30,11 +32,14 @@ public class CadastrarGarcomInterface  extends JFrame{
         setPreferredSize(maxSize);
 
         setResizable(true);
-
+        
+        Color cor = new Color (255,192,203);
 
         JPanel principal = new JPanel();
         principal.setSize(maxSize);
         principal.setLayout(new BoxLayout(principal, BoxLayout.Y_AXIS));
+        
+        JScrollPane scrollPane = new JScrollPane(principal);
         
         setLocationRelativeTo(null);
 
@@ -50,17 +55,20 @@ public class CadastrarGarcomInterface  extends JFrame{
 
         JLabel nomeGarcomJLabel = new JLabel("Nome Garcom");
         JTextField nomeGarcomField = new JTextField();
-        nomeGarcomField.setBackground(Color.YELLOW);
+        nomeGarcomField.setBackground(cor);
+        nomeGarcomField.setHorizontalAlignment(SwingConstants.CENTER);
         nomeGarcomField.setEditable(true);
 
         JLabel idGarcomJLabel = new JLabel("ID Garcom");
         JTextField idGarcomField = new JTextField();
-        idGarcomField.setBackground(Color.RED);
+        idGarcomField.setBackground(cor);
+        idGarcomField.setHorizontalAlignment(SwingConstants.CENTER);
         idGarcomField.setEditable(true);
 
         JLabel enderecoGarcomJLabel = new JLabel("Endereço do Garcom");
         JTextField enderecoGarcomField = new JTextField();
-        enderecoGarcomField.setBackground(Color.ORANGE);
+        enderecoGarcomField.setBackground(cor);
+        enderecoGarcomField.setHorizontalAlignment(SwingConstants.CENTER);
         enderecoGarcomField.setEditable(true);
 
         JButton cadastrarGarcomButton = new JButton("Cadastrar Garcom");

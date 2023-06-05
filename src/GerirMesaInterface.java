@@ -14,7 +14,7 @@ public class GerirMesaInterface extends JFrame{
     }
 
     public GerirMesaInterface(BancoMesas bancoMesas) {
-        super("Gerenciar Mesa");
+        super("Gerenciamento de Mesas");
         this.bancoMesas=bancoMesas;
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
@@ -28,13 +28,17 @@ public class GerirMesaInterface extends JFrame{
 
         setLocationRelativeTo(null);
 
-        JPanel panelPrincipal = new JPanel();
-        panelPrincipal.setBackground(Color.WHITE);
-        panelPrincipal.setLayout(new FlowLayout(FlowLayout.CENTER));
+        JPanel topoPanel = new JPanel();
+        topoPanel.setBackground(Color.BLUE);
 
-        JPanel panelCentral = new JPanel(new BorderLayout());
-        panelCentral.setBackground(Color.WHITE);
-        panelCentral.add(panelPrincipal, BorderLayout.CENTER);
+        JLabel topoLabel = new JLabel("Tela de Gerenciamento de Mesas");
+        topoLabel.setBorder(BorderFactory.createEmptyBorder(50,0,0,0));
+
+
+        JPanel corpoPanel = new JPanel();
+        corpoPanel.setSize(500, 500);
+        corpoPanel.setLayout(new FlowLayout(FlowLayout.CENTER));
+
 
         JPanel panelRodape = new JPanel();
         panelRodape.setBackground(Color.PINK);
@@ -73,13 +77,15 @@ public class GerirMesaInterface extends JFrame{
             }
         });
 
-        panelPrincipal.add(cadastrarButton);
-        panelPrincipal.add(removerButton);
-        panelPrincipal.add(alterarButton);
+        topoPanel.add(topoLabel);
+        corpoPanel.add(cadastrarButton);
+        corpoPanel.add(removerButton);
+        corpoPanel.add(alterarButton);
         panelRodape.add(voltaMenuButton);
 
         getContentPane().setLayout(new BorderLayout());
-        getContentPane().add(panelCentral, BorderLayout.CENTER);
+        getContentPane().add(topoPanel, BorderLayout.NORTH);
+        getContentPane().add(corpoPanel, BorderLayout.CENTER);
         getContentPane().add(panelRodape, BorderLayout.SOUTH);
 
         setVisible(true);

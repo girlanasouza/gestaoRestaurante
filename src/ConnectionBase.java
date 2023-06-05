@@ -5,7 +5,7 @@ import java.sql.SQLException;
 public class ConnectionBase {
 
     private String url = "jdbc:sqlite:" + "/home/girlana/Documentos/fourth/tap/bancoDados/gestaoRestaurante.sqlite3";
-    protected static Connection conexao;
+    protected static Connection conexao=null;
 
     public ConnectionBase(){
         if(conexao==null) conecta();

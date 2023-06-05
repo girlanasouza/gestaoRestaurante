@@ -1,9 +1,5 @@
-import java.awt.Dimension;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-
+import java.awt.*;
+import java.awt.event.*;
 import javax.swing.*;
 
 public class MainInterface extends javax.swing.JFrame {
@@ -33,7 +29,7 @@ public class MainInterface extends javax.swing.JFrame {
         return this.bancoMesas;
     }
     public MainInterface(Cardapio cardapio,BancoGarcom bancoGarcom, BancoMesas bancoMesas, BancoPedidos bancoPedidos) {
-        super("TELA PRINCIPAL");
+        super("TELA INICIAL");
 
         this.bancoGarcom=bancoGarcom;
         this.cardapio=cardapio;
@@ -57,11 +53,11 @@ public class MainInterface extends javax.swing.JFrame {
         title.setHorizontalAlignment(SwingConstants.CENTER);
         this.add(title);
 
-        JButton menuButton = new JButton("Menu");
+        JButton menuButton = new JButton("Realizar Pedido");
         menuButton.setBounds(20, 55, 220, 25);
         this.add(menuButton);
 
-        JButton cadastrarCardapioButton = new JButton("Cadastrar Cardapio");
+        JButton cadastrarCardapioButton = new JButton("Gerenciar Cardapio");
         cadastrarCardapioButton.setBounds(20, 90, 220, 25);
         this.add(cadastrarCardapioButton);
 
@@ -69,8 +65,6 @@ public class MainInterface extends javax.swing.JFrame {
         gerirGarcomButton.setBounds(20, 125, 220, 25);
         this.add(gerirGarcomButton);
         
-
-
         menuButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 if (cardapio != null) {
@@ -85,8 +79,10 @@ public class MainInterface extends javax.swing.JFrame {
 
         cadastrarCardapioButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event){
-                CadastrarItemCardapioInterface cadastrarCardapioInterface = new CadastrarItemCardapioInterface(cardapio);
-                cadastrarCardapioInterface.setVisible(true);
+                GerirCardapioInterface gerirCardapioInterface = new GerirCardapioInterface(cardapio);
+                gerirCardapioInterface.setVisible(true);
+                // CadastrarItemCardapioInterface cadastrarCardapioInterface = new CadastrarItemCardapioInterface(cardapio);
+                // cadastrarCardapioInterface.setVisible(true);
             }
         });
 
