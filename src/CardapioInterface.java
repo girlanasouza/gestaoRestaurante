@@ -11,7 +11,7 @@ public class CardapioInterface extends JFrame {
     private BancoPedidos bancoPedidos;
     
     public CardapioInterface(Cardapio cardapio, BancoMesas bancoMesas, BancoGarcom bancoGarcons, BancoPedidos bancoPedidos) {
-        super("Realizar Pedido");
+        super("Cardápio");
         itens = new ArrayList<Item>();
         this.cardapio = cardapio;
         this.bancoMesas=bancoMesas;
@@ -28,7 +28,7 @@ public class CardapioInterface extends JFrame {
 
         setResizable(true);
         
-        Color cor = new Color (255,192,203);
+        // Color cor = new Color (255,192,203);
         Color corTopo = new Color(173,216,230);
         Color corCorpo = new Color (245,255,250);
         

@@ -19,7 +19,7 @@ public class CadastrarItemCardapioInterface extends JFrame {
         setSize(maxSize);
         setPreferredSize(maxSize);
         setResizable(true);
-        
+            
         Color corTopo = new Color(173,216,230);
         Color corCorpo = new Color (245,255,250);
         
@@ -37,6 +37,13 @@ public class CadastrarItemCardapioInterface extends JFrame {
         JPanel rodapePanel = new JPanel();
         rodapePanel.setBackground(corCorpo);
         rodapePanel.setLayout(new FlowLayout(FlowLayout.RIGHT));
+
+        JLabel idItem = new JLabel("Id do Item");
+        idItem.setBackground(corTopo);
+        JTextField idItemField = new JTextField();
+        idItemField.setBackground(corCorpo);
+        idItemField.setHorizontalAlignment(SwingConstants.CENTER);
+        idItemField.setEditable(true);
         
         JLabel nomeItem = new JLabel("Nome do Item");
         nomeItem.setBackground(corTopo);
@@ -64,16 +71,18 @@ public class CadastrarItemCardapioInterface extends JFrame {
 
         cadastrarItemButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
+                String id = idItemField.getText();
                 String nome = itemField.getText();
                 String descricao = descricaoItemField.getText();
                 String valorText = valueItemField.getText();
         
-                if (nome.isEmpty() || descricao.isEmpty() || valorText.isEmpty()) {
+                if (id.isEmpty()||nome.isEmpty() || descricao.isEmpty() || valorText.isEmpty()) {
                     JOptionPane.showMessageDialog(null, "Preencha todos os campos!");
                 } else {
                     double valor = Double.parseDouble(valorText);
+                    int idConvertido = Integer.parseInt(id);
                     //arrumar id
-                    Item item = new Item(nome, descricao, valor);
+                    Item item = new Item(idConvertido, nome, descricao, valor);
                     cardapio.addItem(item);
                     itemField.setText("");
                     descricaoItemField.setText("");

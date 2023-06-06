@@ -2,28 +2,27 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 
-public class RemoverGarcomInterface extends JFrame {
-    private Garcom garcom;
-    private BancoGarcom bGarcom;
-    private int idGarcom=0;
+public class RemoverItemInterface extends JFrame {
+    private Cardapio cardapio;
+    private int idItem=0;
 
-    public void setIdGarcom(int id){
-        this.idGarcom=id;
-    }
-    public int getIdGarcom(){
-        return this.idGarcom;
-    }
-    public Garcom getGarcom() {
-        return this.garcom;
+    public Cardapio getCardapio(){
+        return this.cardapio;
     }
 
-    public BancoGarcom getBancoGarcom() {
-        return this.bGarcom;
+    public void setCardapio(Cardapio cardapio){
+        this.cardapio=cardapio;
+    }
+    public void setIdItem(int id){
+        this.idItem=id;
+    }
+    public int getIdItem(){
+        return this.idItem;
     }
 
-    public RemoverGarcomInterface(BancoGarcom bancoGarcom) {
-        super("Remover Garçom");
-        this.bGarcom = bancoGarcom;
+    public RemoverItemInterface(Cardapio cardapio) {
+        super("Remover Item");
+        this.cardapio = cardapio;
 
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
@@ -41,7 +40,7 @@ public class RemoverGarcomInterface extends JFrame {
         JPanel topoPanel = new JPanel();
         topoPanel.setBackground(corTopo);
 
-        JLabel topoLabel = new JLabel("Tela de Remoção de Garçom");
+        JLabel topoLabel = new JLabel("Tela de Remoção de Item");
         topoLabel.setBorder(BorderFactory.createEmptyBorder(50, 0, 0, 0));
 
         JPanel corpoPanel = new JPanel();
@@ -61,25 +60,25 @@ public class RemoverGarcomInterface extends JFrame {
 
         idGarcomField.setEditable(true);
 
-        JButton mostrarButton = new JButton("Mostrar Garçom");
+        JButton mostrarButton = new JButton("Mostrar Item");
         mostrarButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                RemoverGarcomInterface.this.setIdGarcom(Integer.parseInt(idGarcomField.getText()));
-                Garcom garcom = bGarcom.buscarGarcom(getIdGarcom());
-                if (garcom != null) {
-                    JOptionPane.showMessageDialog(RemoverGarcomInterface.this, garcom.toString(), "Informações do Garçom", JOptionPane.INFORMATION_MESSAGE);
+                RemoverItemInterface.this.setIdItem(Integer.parseInt(idGarcomField.getText()));
+                Item item = cardapio.buscarItem(getIdItem());
+                if (item != null) {
+                    JOptionPane.showMessageDialog(RemoverItemInterface.this, item.toString(), "Informações do Item", JOptionPane.INFORMATION_MESSAGE);
                 } else {
-                    JOptionPane.showMessageDialog(RemoverGarcomInterface.this, "Garçom não encontrado.", "Erro", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(RemoverItemInterface.this, "Item não encontrado.", "Erro", JOptionPane.ERROR_MESSAGE);
                 }
             }
         });
 
-        JButton removerGarcomButton = new JButton("Remover Garcom");
+        JButton removerGarcomButton = new JButton("Remover Item");
         removerGarcomButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                RemoverGarcomInterface.this.getBancoGarcom().removeWaiter(getIdGarcom());
+                RemoverItemInterface.this.getCardapio().removeItem(getIdItem());
                 idGarcomField.setText("");
-                JOptionPane.showMessageDialog(null,"Garçom Removido com Sucesso");
+                JOptionPane.showMessageDialog(null,"Item Removido com Sucesso");
 
             }
         });
@@ -87,7 +86,7 @@ public class RemoverGarcomInterface extends JFrame {
         JButton voltarButton = new JButton("Voltar");
         voltarButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                RemoverGarcomInterface.this.setVisible(false);
+                RemoverItemInterface.this.setVisible(false);
             }
         });
 

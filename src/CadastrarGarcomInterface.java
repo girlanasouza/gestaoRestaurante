@@ -9,9 +9,8 @@ public class CadastrarGarcomInterface  extends JFrame{
         return this.bancoGarcom;
     }
     public CadastrarGarcomInterface(BancoGarcom bancoGarcom){
-        super("Cadastrar Garçom"); 
+        super("Cadastro de Garçom"); 
         this.bancoGarcom = bancoGarcom;
-        
 
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
@@ -23,40 +22,41 @@ public class CadastrarGarcomInterface  extends JFrame{
 
         setResizable(true);
         
-        Color cor = new Color (255,192,203);
-
-        JPanel principal = new JPanel();
-        principal.setSize(maxSize);
-        principal.setLayout(new BoxLayout(principal, BoxLayout.Y_AXIS));
         
+        Color corTopo = new Color(173,216,230);
+        Color corCorpo = new Color (245,255,250);
         
-        setLocationRelativeTo(null);
+        JPanel topoPanel = new JPanel();
+        topoPanel.setBackground(corTopo);
 
-        JButton voltaMenuButton = new JButton("Voltar", null);
-        voltaMenuButton.setBounds(20, 55, 220, 25);
+        JLabel topoLabel = new JLabel("Tela de Cadastro de Garçom");
+        topoLabel.setBorder(BorderFactory.createEmptyBorder(50,0,0,0));
 
-        voltaMenuButton.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                CadastrarGarcomInterface.this.setVisible(false);
-               
-            }
-        });
+        JPanel corpoPanel = new JPanel();
+        corpoPanel.setSize(500, 500);
+        corpoPanel.setBackground(corCorpo);
+        corpoPanel.setLayout(new BoxLayout(corpoPanel, BoxLayout.Y_AXIS));
+        
+        JPanel rodapePanel = new JPanel();
+        rodapePanel.setBackground(corCorpo);
+        rodapePanel.setLayout(new FlowLayout(FlowLayout.RIGHT));
+        
 
         JLabel nomeGarcomJLabel = new JLabel("Nome Garcom");
         JTextField nomeGarcomField = new JTextField();
-        nomeGarcomField.setBackground(cor);
+        nomeGarcomField.setBackground(corCorpo);
         nomeGarcomField.setHorizontalAlignment(SwingConstants.CENTER);
         nomeGarcomField.setEditable(true);
 
         JLabel idGarcomJLabel = new JLabel("ID Garcom");
         JTextField idGarcomField = new JTextField();
-        idGarcomField.setBackground(cor);
+        idGarcomField.setBackground(corCorpo);
         idGarcomField.setHorizontalAlignment(SwingConstants.CENTER);
         idGarcomField.setEditable(true);
 
         JLabel enderecoGarcomJLabel = new JLabel("Endereço do Garcom");
         JTextField enderecoGarcomField = new JTextField();
-        enderecoGarcomField.setBackground(cor);
+        enderecoGarcomField.setBackground(corCorpo);
         enderecoGarcomField.setHorizontalAlignment(SwingConstants.CENTER);
         enderecoGarcomField.setEditable(true);
 
@@ -79,6 +79,15 @@ public class CadastrarGarcomInterface  extends JFrame{
             }
         });
         
+        JButton voltaMenuButton = new JButton("Voltar", null);
+        voltaMenuButton.setBounds(20, 55, 220, 25);
+
+        voltaMenuButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                CadastrarGarcomInterface.this.setVisible(false);
+               
+            }
+        });
 
         JButton imprimirBancoGarcomButton = new JButton("Imprimir Banco Garcom");
         imprimirBancoGarcomButton.addActionListener(new ActionListener() {
@@ -87,23 +96,29 @@ public class CadastrarGarcomInterface  extends JFrame{
             }
         });
 
-        
-        principal.add(nomeGarcomJLabel);
-        principal.add(nomeGarcomField);
+        topoPanel.add(topoLabel);
+        corpoPanel.add(nomeGarcomJLabel);
+        corpoPanel.add(nomeGarcomField);
 
-        principal.add(idGarcomJLabel);
-        principal.add(idGarcomField);
+        corpoPanel.add(idGarcomJLabel);
+        corpoPanel.add(idGarcomField);
 
-        principal.add(enderecoGarcomJLabel);
-        principal.add(enderecoGarcomField);
+        corpoPanel.add(enderecoGarcomJLabel);
+        corpoPanel.add(enderecoGarcomField);
         // principal.add(corpoPanel);
         // principal.add(rodPanel);
 
-        principal.add(voltaMenuButton);
-        principal.add(cadastrarGarcomButton);
-        principal.add(imprimirBancoGarcomButton);
+        rodapePanel.add(voltaMenuButton);
+        rodapePanel.add(cadastrarGarcomButton);
+        rodapePanel.add(imprimirBancoGarcomButton);
 
-        this.add(principal);
+        getContentPane().setLayout(new BorderLayout());
+        getContentPane().add(topoPanel, BorderLayout.NORTH);
+        getContentPane().add(corpoPanel, BorderLayout.CENTER);
+        getContentPane().add(rodapePanel, BorderLayout.SOUTH);
+
+
+        setLocationRelativeTo(null);
         setVisible(true);
     }
 }

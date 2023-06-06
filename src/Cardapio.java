@@ -38,17 +38,39 @@ public class Cardapio extends ConnectionBase {
 		return cardapio;
 	}
 	
-	public boolean removeItem(Item item) {
-		if(!cardapio.contains(item)) {
-			return false;
-		}
-		else {
-			cardapio.remove(item);
-		}
+	public boolean removeItem(int id) {
+		for (Item i : cardapio) {
+	        if (i.getId()==id) {
+	            cardapio.remove(i);  
+                String sql = "DELETE FROM item WHERE id like ?";
 
-		return true;
+	            try {
+	                PreparedStatement preparedStatement = conexao.prepareStatement(sql);
+	                preparedStatement.setInt(1, i.getId());
+	                int status = preparedStatement.executeUpdate();
+
+	                preparedStatement.close();
+
+	                return status!=0;
+	            } catch (SQLException e) {
+	                System.out.println(e);
+	            }
+	            
+	            return true;
+	        }
+	    }
+	    return false;  
 	}
 	
+
+	public Item buscarItem(int id){
+		for (Item i : cardapio) {
+	        if (i.getId()==id) {
+				return i;
+			}
+		}
+		return null;
+	}
     public String describeMenu(){
         String retorno = "";
 

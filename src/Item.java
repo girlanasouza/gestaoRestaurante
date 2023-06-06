@@ -1,16 +1,24 @@
 
 public class Item {
+	private int id;
 	private String name;
 	private String describe;
 	private double value;
 	
-	public Item( String name, String describe, double value) {
-
+	public Item(int id,String name, String describe, double value) {
+		this.id=id;
 		this.name=name;
 		this.describe=describe;
 		this.value=value;
 	}
 
+	public void setId(int id){
+		this.id=id;
+	}
+
+	public int getId(){
+		return this.id;
+	}
 
 	public String getName() {
 		return this.name;
@@ -38,7 +46,7 @@ public class Item {
 	}
 	
 	public String toString() {
-		String retorno = "Nome do prato: "+getName()+"\n"+"Descrição: "+getDescribe()+"\n"+
+		String retorno = "Id: "+getId()+"Nome do prato: "+getName()+"\n"+"Descrição: "+getDescribe()+"\n"+
 	" Valor: "+getValue()+"\n";
 		return retorno;
 	}

@@ -4,9 +4,9 @@ public class Main {
 
     public static void main(String args[]) {
     	
-        Item item1 = new Item("Carbonara", "Carbonara com bacon fresco", 30);
-        Item item2 = new Item("Tartare de Salmão", "Tartare de salmão com gema", 50);
-        Item item3 = new Item("Pizza de Banana", "Pizza de banana da terra com canela", 50);
+        Item item1 = new Item(1,"Carbonara", "Carbonara com bacon fresco", 30);
+        Item item2 = new Item(2,"Tartare de Salmão", "Tartare de salmão com gema", 50);
+        Item item3 = new Item(3,"Pizza de Banana", "Pizza de banana da terra com canela", 50);
         
         
         Mesa mesa1 = new Mesa(1,101, "false");

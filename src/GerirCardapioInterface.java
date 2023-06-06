@@ -1,9 +1,6 @@
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
-import javax.swing.border.EtchedBorder;
-
-
 
 public class GerirCardapioInterface extends JFrame{
 	private Cardapio cardapio;
@@ -53,7 +50,8 @@ public class GerirCardapioInterface extends JFrame{
 		JButton removerItemButton = new JButton("Remover item");
         removerItemButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-				GerirCardapioInterface.this.setVisible(false);
+                RemoverItemInterface removerItemInterface = new RemoverItemInterface(GerirCardapioInterface.this.getCardapio());
+            	removerItemInterface.setVisible(true);
                 
             }
         });

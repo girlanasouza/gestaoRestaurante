@@ -57,7 +57,7 @@ public class ConfirmarPedidoInterface extends JFrame {
 
     public ConfirmarPedidoInterface(ArrayList<Item> itens, BancoMesas bancoMesas, BancoGarcom bancoGarcom, 
     BancoPedidos bancoPedidos){
-        super("Acompanhamento de Pedido");
+        super("Confirmação de Pedido");
         this.itens = itens;
         this.bancoMesas=bancoMesas;
         this.bancoGarcom=bancoGarcom;
@@ -66,7 +66,6 @@ public class ConfirmarPedidoInterface extends JFrame {
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
         Dimension maxSize = new Dimension(500, 800);
-        Color color = new Color(255,235,205);
 
         setSize(maxSize);
 
@@ -101,9 +100,9 @@ public class ConfirmarPedidoInterface extends JFrame {
         for(Mesa mesa:getBancoMesas().getMesa()){
             if(mesa.verifyAvaliableTable()){
                 JRadioButton radioButton = new JRadioButton(mesa.toString());
-                radioButton.setBackground(color);
+                radioButton.setBackground(corCorpo);
                 checkBoxGroupMesa.add(radioButton);
-                
+                // checkBoxGroupMesa.setBackground(checkBoxGroupMesa);
                 corpoPanel.add(radioButton);  
 
                 radioButton.addItemListener(new ItemListener() {
@@ -118,7 +117,7 @@ public class ConfirmarPedidoInterface extends JFrame {
 
         for(Garcom garcom:getBancoGarcom().getGacons()){
             JRadioButton radioGarcomButton = new JRadioButton(garcom.toString());
-            radioGarcomButton.setBackground(color);
+            radioGarcomButton.setBackground(corCorpo);
             checkBoxGroupGarcom.add(radioGarcomButton);
             corpoPanel.add(radioGarcomButton);
             radioGarcomButton.addItemListener(new ItemListener() {

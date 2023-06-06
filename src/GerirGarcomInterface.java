@@ -30,8 +30,13 @@ public class GerirGarcomInterface extends JFrame {
 
         setLocationRelativeTo(null);
 
+
+        Color corTopo = new Color(173,216,230);
+        Color corCorpo = new Color (245,255,250);
+		
+
         JPanel topoPanel = new JPanel();
-        topoPanel.setBackground(Color.CYAN);
+        topoPanel.setBackground(corTopo);
 
         JLabel topoLabel = new JLabel("Tela de Gerenciamento de Garçons");
         topoLabel.setBorder(BorderFactory.createEmptyBorder(50,0,0,0));
@@ -43,7 +48,7 @@ public class GerirGarcomInterface extends JFrame {
 
         
         JPanel rodapePanel = new JPanel();
-        rodapePanel.setBackground(Color.RED);
+        rodapePanel.setBackground(corCorpo);
         rodapePanel.setLayout(new FlowLayout(FlowLayout.RIGHT));
 
 
@@ -58,7 +63,6 @@ public class GerirGarcomInterface extends JFrame {
 
         JButton removerButton = new JButton("Remover Garçom");
         removerButton.setBounds(20, 115, 220, 25);
-        removerButton.setBackground(Color.MAGENTA);
 
         removerButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
