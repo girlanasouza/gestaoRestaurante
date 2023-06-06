@@ -1,6 +1,7 @@
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
+import javax.swing.border.EtchedBorder;
 
 
 
@@ -17,24 +18,30 @@ public class GerirCardapioInterface extends JFrame{
         setSize(maxSize);
         setPreferredSize(maxSize);
         setResizable(true);
-
+        
+        Color corTopo = new Color(173,216,230);
+        Color corCorpo = new Color (245,255,250);
 		
 		JPanel topoPanel = new JPanel();
-        topoPanel.setBackground(Color.CYAN);
+        topoPanel.setBackground(corTopo);
 
         JLabel topoLabel = new JLabel("Tela de Cadastro de Gerenciamento de Cardápio");
         topoLabel.setBorder(BorderFactory.createEmptyBorder(50,0,0,0));
+        
 
         JPanel corpoPanel = new JPanel();
         corpoPanel.setSize(500, 500);
         corpoPanel.setLayout(new FlowLayout(FlowLayout.CENTER));
-
+        corpoPanel.setBackground(corCorpo);
         
         JPanel rodapePanel = new JPanel();
         rodapePanel.setBackground(Color.RED);
         rodapePanel.setLayout(new FlowLayout(FlowLayout.RIGHT));
+        rodapePanel.setBackground(corCorpo);
 
 		JButton cadastrarItemButton = new JButton("Cadastrar item");
+//		cadastrarItemButton.setBackground(corTopo);
+//		cadastrarItemButton.setBorder(BorderFactory.createEtchedBorder(EtchedBorder.RAISED));
         cadastrarItemButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
 				CadastrarItemCardapioInterface cadastrarCardapioInterface = new CadastrarItemCardapioInterface(GerirCardapioInterface.this.getCardapio());

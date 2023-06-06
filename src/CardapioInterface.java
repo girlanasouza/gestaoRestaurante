@@ -20,7 +20,7 @@ public class CardapioInterface extends JFrame {
 
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
-        Dimension maxSize = new Dimension(500, 800);
+        Dimension maxSize = new Dimension(800, 800);
         
         setSize(maxSize);
 
@@ -29,46 +29,33 @@ public class CardapioInterface extends JFrame {
         setResizable(true);
         
         Color cor = new Color (255,192,203);
-
-        JPanel principal = new JPanel();
-        principal.setSize(500, 500);
-        principal.setLayout((new BoxLayout(principal, BoxLayout.Y_AXIS)));
-
-        JLabel title = new JLabel("Cardápio");
-        title.setBorder(BorderFactory.createEmptyBorder(50,0,0,0));
-
-        JPanel painelCardapio = new JPanel();
-        painelCardapio.setBackground(Color.BLUE);
-        painelCardapio.add(title, BorderLayout.CENTER);
-        painelCardapio.add(title);
-
-        JPanel panelEsquerda = new JPanel();
-        panelEsquerda.setBackground(cor);
-        panelEsquerda.setLayout(new FlowLayout(FlowLayout.RIGHT));
-
-        JLabel labelEsquerda = new JLabel("Área Esquerda");
-        labelEsquerda.setHorizontalAlignment(SwingConstants.CENTER);
-        panelEsquerda.add(labelEsquerda, BorderLayout.CENTER);
+        Color corTopo = new Color(173,216,230);
+        Color corCorpo = new Color (245,255,250);
         
+        JPanel topoPanel = new JPanel();
+        topoPanel.setBackground(corTopo);
 
-        JPanel panelDireita = new JPanel();
-        panelDireita.setBackground(cor);
-        panelDireita.setLayout(new BorderLayout());
+        JLabel topoLabel = new JLabel("Cardápio");
+        topoLabel.setBorder(BorderFactory.createEmptyBorder(50,0,0,0));
 
-        JLabel labelDireita = new JLabel("Área Direita");
-        labelDireita.setHorizontalAlignment(SwingConstants.CENTER);
-        panelDireita.add(labelDireita, BorderLayout.CENTER);
+        JPanel corpoPanel = new JPanel();
+        corpoPanel.setSize(500, 500);
+        corpoPanel.setLayout(new FlowLayout(FlowLayout.CENTER));
+        corpoPanel.setBackground(corCorpo);
         
+        JPanel rodapePanel = new JPanel();
+        rodapePanel.setBackground(Color.RED);
+        rodapePanel.setLayout(new FlowLayout(FlowLayout.RIGHT));
+        rodapePanel.setBackground(corCorpo);
 
-        JPanel panelMeio = new JPanel();
-        panelMeio.setBackground(cor);
-        panelMeio.setLayout(new BoxLayout(panelMeio, BoxLayout.Y_AXIS));
+
 
         if (cardapio != null) {
             ArrayList<Item> opcoesCardapio = cardapio.getCardapio();
             for (Item item : opcoesCardapio) {
-                JCheckBox checkBox = new JCheckBox(item.getDescribe());
+                JCheckBox checkBox = new JCheckBox(item.toString());
                 checkBox.isBackgroundSet();
+                checkBox.setBackground(corCorpo);
                 checkBox.setAlignmentX(Component.CENTER_ALIGNMENT);
                 checkBox.setBorder(BorderFactory.createEmptyBorder(50  ,50,50,50));
                 checkBox.addActionListener(new ActionListener() {
@@ -78,13 +65,13 @@ public class CardapioInterface extends JFrame {
                     }
                     private void controlaPedido(){
                         if(checkBox.isSelected()){
-                            CardapioInterface.this.getItens().add(item);
+                            CardapioInterface.this.itens.add(item);
                         }else{
-                            CardapioInterface.this.getItens().remove(item);
+                            CardapioInterface.this.itens.remove(item);
                         }
                     }
                 });
-                panelMeio.add(checkBox);
+                corpoPanel.add(checkBox);
             }
         }
 
@@ -108,6 +95,7 @@ public class CardapioInterface extends JFrame {
                 else{
                     ConfirmarPedidoInterface confirmarPedidoInterface =  new ConfirmarPedidoInterface(CardapioInterface.this.getItens(), CardapioInterface.this.getBancoMesas(),
                     CardapioInterface.this.getBancoGarcom(), CardapioInterface.this.getBancoPedidos());
+                    System.out.println("todos os itens"+CardapioInterface.this.getItens().toString());
                     confirmarPedidoInterface.setVisible(true);
                
                 }
@@ -124,15 +112,17 @@ public class CardapioInterface extends JFrame {
             }
         });
 
+        topoPanel.add(topoLabel);
+        rodapePanel.add(voltaMenuButton);
+        rodapePanel.add(realizarPedidoButton);
         
-        principal.add(painelCardapio);
-        principal.add(panelMeio);
-        panelEsquerda.add(voltaMenuButton);
-        panelEsquerda.add(realizarPedidoButton);
+        
+
         getContentPane().setLayout(new BorderLayout());
-        getContentPane().add(painelCardapio, BorderLayout.NORTH);
-        getContentPane().add(principal, BorderLayout.CENTER);
-        getContentPane().add(panelEsquerda, BorderLayout.SOUTH);
+        getContentPane().add(topoPanel, BorderLayout.NORTH);
+        getContentPane().add(corpoPanel, BorderLayout.CENTER);
+        getContentPane().add(rodapePanel, BorderLayout.SOUTH);
+
 
         setLocationRelativeTo(null);
         setVisible(true);

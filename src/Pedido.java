@@ -5,16 +5,16 @@ import java.util.ArrayList;
 
 public class Pedido extends ConnectionBase {
     private ArrayList<Item> itens = new ArrayList<>();
-    private double totalConta=0;
+    private double totalConta = 0;
     private Mesa mesa;
     private Garcom garcom;
     private String situacao;
 
-    public Pedido(ArrayList<Item> itens, Mesa mesa, Garcom garcom, String situacao){
-        itens = new ArrayList<>();
-        this.mesa=mesa;
-        this.garcom=garcom;
-        this.situacao=situacao;
+    public Pedido(ArrayList<Item> itens, Mesa mesa, Garcom garcom, String situacao) {
+        this.itens = itens;
+        this.mesa = mesa;
+        this.garcom = garcom;
+        this.situacao = situacao;
     }
     
     public void setgarcom(Garcom garcom){
@@ -57,6 +57,10 @@ public class Pedido extends ConnectionBase {
             }
         }
     }
+
+    public ArrayList<Item> getItens(){
+        return this.itens;
+    }
     
     public boolean addItem(Item item) {
 
@@ -92,19 +96,21 @@ public class Pedido extends ConnectionBase {
         this.garcom=garcom;
     }    
     
-    public String getDescribe(){
+    public String getDescribe() {
         String retorno = "";
 
-        for(Item item:itens){
-            retorno = retorno + item.toString()+"\n";
-            this.totalConta+=item.getValue();
+        for (Item item : itens) {
+            retorno = retorno + item.toString() + "\n";
+            this.totalConta += item.getValue();
         }
-        retorno=retorno+this.garcom.toString()+mesa.toString()+"Total da conta: "+this.totalConta+"\n"+getSituacao();
+
+        retorno = retorno + this.garcom.toString() + mesa.toString() + "Total da conta: " + this.totalConta + "\n"
+                + getSituacao();
+
         return retorno;
     }
 
-    public double getTotalConta(){
+    public double getTotalConta() {
         return this.totalConta;
     }
-
 }

@@ -39,7 +39,7 @@ public class Item {
 	
 	public String toString() {
 		String retorno = "Nome do prato: "+getName()+"\n"+"Descrição: "+getDescribe()+"\n"+
-	"Valor: "+getValue()+"\n";
+	" Valor: "+getValue()+"\n";
 		return retorno;
 	}
 

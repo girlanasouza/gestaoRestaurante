@@ -30,17 +30,22 @@ public class GerirGarcomInterface extends JFrame {
 
         setLocationRelativeTo(null);
 
-        JPanel panelPrincipal = new JPanel();
-        panelPrincipal.setBackground(Color.WHITE);
-        panelPrincipal.setLayout(new FlowLayout(FlowLayout.CENTER));
+        JPanel topoPanel = new JPanel();
+        topoPanel.setBackground(Color.CYAN);
 
-        JPanel panelCentral = new JPanel(new BorderLayout());
-        panelCentral.setBackground(Color.WHITE);
-        panelCentral.add(panelPrincipal, BorderLayout.CENTER);
+        JLabel topoLabel = new JLabel("Tela de Gerenciamento de Garçons");
+        topoLabel.setBorder(BorderFactory.createEmptyBorder(50,0,0,0));
+        
 
-        JPanel panelRodape = new JPanel();
-        panelRodape.setBackground(Color.PINK);
-        panelRodape.setLayout(new FlowLayout(FlowLayout.RIGHT));
+        JPanel corpoPanel = new JPanel();
+        corpoPanel.setSize(500, 500);
+        corpoPanel.setLayout(new FlowLayout(FlowLayout.CENTER));
+
+        
+        JPanel rodapePanel = new JPanel();
+        rodapePanel.setBackground(Color.RED);
+        rodapePanel.setLayout(new FlowLayout(FlowLayout.RIGHT));
+
 
         JButton cadastrarButton = new JButton("Cadastrar Garçom");
         cadastrarButton.setBounds(20, 55, 220, 25);
@@ -86,15 +91,18 @@ public class GerirGarcomInterface extends JFrame {
             }
         });
 
-        panelPrincipal.add(cadastrarButton);
-        panelPrincipal.add(removerButton);
-        panelPrincipal.add(alterarButton);
-        panelPrincipal.add(relatorioButton);
-        panelRodape.add(voltaMenuButton);
+        topoPanel.add(topoLabel);
 
-        getContentPane().setLayout(new BorderLayout());
-        getContentPane().add(panelCentral, BorderLayout.CENTER);
-        getContentPane().add(panelRodape, BorderLayout.SOUTH);
+        corpoPanel.add(cadastrarButton);
+        corpoPanel.add(removerButton);
+        corpoPanel.add(alterarButton);
+        corpoPanel.add(relatorioButton);
+        rodapePanel.add(voltaMenuButton);
+
+		getContentPane().setLayout(new BorderLayout());
+        getContentPane().add(topoPanel, BorderLayout.NORTH);
+        getContentPane().add(corpoPanel, BorderLayout.CENTER);
+        getContentPane().add(rodapePanel, BorderLayout.SOUTH);
 
         setVisible(true);
     }

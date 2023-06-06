@@ -75,27 +75,25 @@ public class ConfirmarPedidoInterface extends JFrame {
         setResizable(true);
 
         setLocationRelativeTo(null);
+
+        Color corTopo = new Color(173,216,230);
+        Color corCorpo = new Color (245,255,250);
+		
+		JPanel topoPanel = new JPanel();
+        topoPanel.setBackground(corTopo);
+
+        JLabel topoLabel = new JLabel("Confirmação de Pedido");
+        topoLabel.setBorder(BorderFactory.createEmptyBorder(50,0,0,0));
+
+        JPanel corpoPanel = new JPanel();
+        corpoPanel.setSize(500, 500);
+        corpoPanel.setLayout(new FlowLayout(FlowLayout.CENTER));
+        corpoPanel.setBackground(corCorpo);
         
-        JPanel panelPrincipal = new JPanel();
-        panelPrincipal.setBackground(color);
-        panelPrincipal.setLayout(new BoxLayout(panelPrincipal, BoxLayout.Y_AXIS));
-
-        JPanel panelHead = new JPanel();
-        panelHead.setBackground(color);
-        panelHead.setLayout(new FlowLayout(FlowLayout.CENTER));
-
-        JPanel panelBody = new JPanel();
-        panelBody.setBackground(color);
-        panelBody.setMinimumSize(new Dimension(500, 600));
-        panelBody.setLayout(new FlowLayout(FlowLayout.CENTER));
-
-        JPanel panelRodape = new JPanel();
-        panelRodape.setBackground(color);
-        panelRodape.setLayout(new FlowLayout(FlowLayout.RIGHT));
-
-        JLabel labelEsquerda = new JLabel("Área Esquerda");
-        labelEsquerda.setHorizontalAlignment(SwingConstants.CENTER);
-        panelRodape.add(labelEsquerda, BorderLayout.CENTER);
+        JPanel rodapePanel = new JPanel();
+        rodapePanel.setBackground(Color.RED);
+        rodapePanel.setLayout(new FlowLayout(FlowLayout.RIGHT));
+        rodapePanel.setBackground(corCorpo);
         
         ButtonGroup checkBoxGroupMesa = new ButtonGroup();
         ButtonGroup checkBoxGroupGarcom = new ButtonGroup();
@@ -106,7 +104,7 @@ public class ConfirmarPedidoInterface extends JFrame {
                 radioButton.setBackground(color);
                 checkBoxGroupMesa.add(radioButton);
                 
-                panelHead.add(radioButton);  
+                corpoPanel.add(radioButton);  
 
                 radioButton.addItemListener(new ItemListener() {
                     @Override
@@ -122,7 +120,7 @@ public class ConfirmarPedidoInterface extends JFrame {
             JRadioButton radioGarcomButton = new JRadioButton(garcom.toString());
             radioGarcomButton.setBackground(color);
             checkBoxGroupGarcom.add(radioGarcomButton);
-            panelBody.add(radioGarcomButton);
+            corpoPanel.add(radioGarcomButton);
             radioGarcomButton.addItemListener(new ItemListener() {
                 @Override
                 public void itemStateChanged(ItemEvent e) {
@@ -151,6 +149,7 @@ public class ConfirmarPedidoInterface extends JFrame {
                     Pedido pedidoFeito = new Pedido(ConfirmarPedidoInterface.this.getItens(), ConfirmarPedidoInterface.this.getMesa(), ConfirmarPedidoInterface.this.getGarcom(), "Feito");
                     ConfirmarPedidoInterface.this.setPedidoBanco(pedidoFeito);  
                     JOptionPane.showMessageDialog(null, "Pedido Realizado com Sucesso!");
+                    System.out.println(pedidoFeito.getTotalConta());
                     ConfirmarPedidoInterface.this.setVisible(false);
                 }
             }
@@ -180,18 +179,15 @@ public class ConfirmarPedidoInterface extends JFrame {
 
 
 
+        topoPanel.add(topoLabel);
+        rodapePanel.add(voltaMenuButton);
+        rodapePanel.add(confirmarPedidButton);
 
-        panelPrincipal.add(panelHead);
-        panelPrincipal.add(panelBody);
-        panelPrincipal.add(panelRodape);
-        panelRodape.add(voltaMenuButton);
-        panelRodape.add(confirmarPedidButton);
-
-        getContentPane().setLayout(new BorderLayout());
-        // getContentPane().add(panelBody, BorderLayout.NORTH);
-        getContentPane().add(panelRodape, BorderLayout.SOUTH);
-
-        this.add(panelPrincipal);
+		getContentPane().setLayout(new BorderLayout());
+        getContentPane().add(topoPanel, BorderLayout.NORTH);
+        getContentPane().add(corpoPanel, BorderLayout.CENTER);
+        getContentPane().add(rodapePanel, BorderLayout.SOUTH);
+        
 
         setVisible(true);
     }

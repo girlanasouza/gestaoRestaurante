@@ -19,31 +19,36 @@ public class CadastrarItemCardapioInterface extends JFrame {
         setSize(maxSize);
         setPreferredSize(maxSize);
         setResizable(true);
-
+        
+        Color corTopo = new Color(173,216,230);
+        Color corCorpo = new Color (245,255,250);
+        
         JPanel topoPanel = new JPanel();
-        topoPanel.setBackground(Color.BLUE);
+        topoPanel.setBackground(corTopo);
 
         JLabel topoLabel = new JLabel("Tela de Cadastro de item");
         topoLabel.setBorder(BorderFactory.createEmptyBorder(50,0,0,0));
 
         JPanel corpoPanel = new JPanel();
         corpoPanel.setSize(500, 500);
+        corpoPanel.setBackground(corCorpo);
         corpoPanel.setLayout(new BoxLayout(corpoPanel, BoxLayout.Y_AXIS));
         
         JPanel rodapePanel = new JPanel();
-        rodapePanel.setBackground(Color.RED);
+        rodapePanel.setBackground(corCorpo);
         rodapePanel.setLayout(new FlowLayout(FlowLayout.RIGHT));
         
         JLabel nomeItem = new JLabel("Nome do Item");
+        nomeItem.setBackground(corTopo);
         JTextField itemField = new JTextField();
-        itemField.setBackground(Color.PINK);
+        itemField.setBackground(corCorpo);
         itemField.setHorizontalAlignment(SwingConstants.CENTER);
         itemField.setEditable(true);
 
         JLabel descricaoItem = new JLabel("Descrição do Item");
 
         JTextField descricaoItemField = new JTextField();
-        descricaoItemField.setBackground(Color.YELLOW);
+        descricaoItemField.setBackground(corCorpo);
         descricaoItemField.setHorizontalAlignment(SwingConstants.CENTER);
         descricaoItemField.setEditable(true);
 
@@ -51,7 +56,7 @@ public class CadastrarItemCardapioInterface extends JFrame {
         JLabel valueItem = new JLabel("Valor do Item");
 
         JTextField valueItemField = new JTextField();
-        valueItemField.setBackground(Color.GREEN);
+        valueItemField.setBackground(corCorpo);
         valueItemField.setHorizontalAlignment(SwingConstants.CENTER);
         valueItemField.setEditable(true);
 
